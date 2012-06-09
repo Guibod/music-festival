@@ -78,6 +78,13 @@
             <scope>test</scope>
             <type>phar</type>
         </dependency>
+        
+        <dependency>
+          <groupId>com.symfony</groupId>
+          <artifactId>Yaml</artifactId>
+          <version>2.0.10</version>
+          <type>phar</type>
+        </dependency>
     </dependencies>
 
 
