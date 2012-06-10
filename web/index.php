@@ -2,7 +2,10 @@
 
 require_once '../lib/bootstrap.php';
 
-$foo = new \MusicFestival\Foo();
-$foo->bar();
+$twig = new Twig_Environment(new Twig_Loader_Filesystem(__DIR__.'/../web'));
 
-$yaml = new \Symfony\Component\Yaml\Yaml();
+$persons = \MusicFestival\Config::read(__DIR__."/../config/sample.yml");
+
+echo $twig->render('index.twig', array('persons' => $persons));
+
+

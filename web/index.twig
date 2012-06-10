@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music Festival</title>
+    </head>
+    <body>
+        {% for person in persons %}
+        <h2>{{ person.name }}</h2>
+        {% for track in person.tracks %}
+        <h3>{{ track.title }}</h3>
+        <img src="{{ track.cover }}" title="{{ track.title }}"/>
+        <ul>
+          <li>{{ track.artist }}</li>
+          <li>{{ track.album }}</li>
+          <li>{{ track.memo }}</li>
+          <li>{{ track.year }}</li>
+        </ul>
+        {% endfor %}
+        {% endfor %}
+
+        Available on https://github.com/Guibod/music-festival under the <a href="http://sam.zoy.org/wtfpl/">WTFPL</a>.
+    </body>
+</html>

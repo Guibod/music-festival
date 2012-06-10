@@ -33,6 +33,15 @@ class TrackTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
+   * @covers MusicFestival\Track::getMemo
+   */
+  public function testGetMemo() {
+    $this->assertNull($this->object->getTitle());
+    $this->object->setAttribute(Track::ATTR_MEMO, 'niek');
+    $this->assertEquals('niek', $this->object->getMemo());
+  }
+
+  /**
    * @covers MusicFestival\Track::getArtist
    */
   public function testGetArtist() {

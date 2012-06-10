@@ -10,4 +10,6 @@ $loader->registerNamespaces(array(
     'Symfony' => __DIR__,
     'MusicFestival' => __DIR__,
 ));
+
+$loader->registerPrefix('Twig_', __DIR__.'/Twig/lib');
 $loader->register(true);

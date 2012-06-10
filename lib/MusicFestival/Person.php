@@ -55,7 +55,12 @@ class Person extends Entity {
 
     if(isset($array['tracks']) && is_array($array['tracks']))
     {
-      $person->setTracks(Track::fromArray($array['tracks']));
+      $tracks = array();
+      foreach($array['tracks'] as $track)
+      {
+        $tracks[] = Track::fromArray($track);
+      }
+      $person->setTracks($tracks);
     }
 
     return $person;

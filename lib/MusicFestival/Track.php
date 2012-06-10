@@ -9,6 +9,7 @@ class Track extends \MusicFestival\Entity {
   const ATTR_ALBUM = 'album';
   const ATTR_YEAR = 'year';
   const ATTR_COVER = 'cover';
+  const ATTR_MEMO = 'memo';
 
   protected $links = array();
 
@@ -18,6 +19,7 @@ class Track extends \MusicFestival\Entity {
       self::ATTR_ARTIST,
       self::ATTR_ALBUM,
       self::ATTR_YEAR,
+      self::ATTR_MEMO,
       self::ATTR_COVER
     ));
   }
@@ -34,6 +36,13 @@ class Track extends \MusicFestival\Entity {
    */
   function getArtist() {
     return $this->getAttribute(self::ATTR_ARTIST);
+  }
+
+  /**
+   * @return string
+   */
+  function getMemo() {
+    return $this->getAttribute(self::ATTR_MEMO);
   }
 
   /**
