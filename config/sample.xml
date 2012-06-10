@@ -1,0 +1,38 @@
+gboddaert:
+  name: Guillaume Boddaert
+  id:   12347
+
+  tracks:
+    1:
+      title:  La Javanaise
+      artist: Serge Gainsbourg
+      album:  Intégrale
+      cover:  http://userserve-ak.last.fm/serve/174s/75272092.jpg
+      memo:   Certainement ma chanson préférée de <b>Gainsbourg</b> avec <a href="http://www.lastfm.fr/music/Serge+Gainsbourg/_/Overseas+Telegram?ac=telegram+gain">Overseas telegram</a> .
+      links:
+        - http://www.lastfm.fr/music/Serge+Gainsbourg/_/La+Javanaise?ac=java
+        - http://open.spotify.com/track/0WbnfhROV7dmW5U1Jzju5B
+        - http://www.deezer.com/fr/music/track/916421
+        - http://www.youtube.com/watch?v=3kicpfXUOXc
+        - http://www.dailymotion.com/video/x22c2v_gainsbourg-serge-la-javanaise_music
+        - http://soundcloud.com/humanoide/javanaise
+        - http://grooveshark.com/s/La+Javanaise/3UYWXK?src=5
+
+    2:
+      title:  L'Aventurier
+      artist: Indochine
+      album:  L'Aventurier
+      cover:  http://userserve-ak.last.fm/serve/174s/74777266.jpg
+      memo:   Bob morane contre doux chacal l'aventurier contre douze guerriers!
+      links:
+        - http://www.lastfm.fr/music/Indochine/L'Aventurier/L'Aventurier
+        - http://www.lastfm.fr/affiliate/byid/9/1277313/6/trackpage/1277313
+        - http://open.spotify.com/track/2J5cHjVu2AOm1xwqrG4QuV
+
+    3:
+      title:  Pas de cover
+      artist: Lady Gaga
+      album:  The Fame
+      memo:   J'aime lady gaga ! Et toc.
+      links:
+        - http://open.spotify.com/track/3nE7aH8voaa5O2IFWkcf7i
