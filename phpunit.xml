@@ -21,9 +21,10 @@
         <whitelist>
             <directory>./</directory>
             <exclude>
-                <directory>./Resources</directory>
+                <directory>./lib/Symfony</directory>
+                <directory>./lib/Twig</directory>
                 <directory>./Tests</directory>
-                <directory>./vendor</directory>
+                <directory>./web</directory>
             </exclude>
         </whitelist>
     </filter>

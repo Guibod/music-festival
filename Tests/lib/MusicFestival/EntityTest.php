@@ -23,7 +23,7 @@ class EntityTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Entity::hasAttribute
+   * @covers MusicFestival\Entity::hasAttribute
    */
   public function testHasAttribute() {
     $this->assertTrue($this->object->hasAttribute('title'));
@@ -31,8 +31,8 @@ class EntityTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Entity::getAttribute
-   * @covers Entity::setAttribute
+   * @covers MusicFestival\Entity::getAttribute
+   * @covers MusicFestival\Entity::setAttribute
    */
   public function testGetAttribute() {
     $this->assertNull($this->object->getAttribute('title'));
@@ -48,7 +48,7 @@ class EntityTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Entity::setAttribute
+   * @covers MusicFestival\Entity::setAttribute
    */
   public function testSetAttribute() {
     $classname = get_class($this->object);
@@ -57,7 +57,7 @@ class EntityTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Entity::setAttributes
+   * @covers MusicFestival\Entity::setAttributes
    */
   public function testSetAttributes() {
     $this->object->setAttributes(array('title' => 'Song for a dev', 'content' => 'niek'));
@@ -67,7 +67,7 @@ class EntityTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Entity::setAttributes
+   * @covers MusicFestival\Entity::setAttributes
    */
   public function testSetAttributesWithBullcrap() {
     $this->object->setAttributes(array('unknown' => 'xyz'));

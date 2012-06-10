@@ -1,6 +1,6 @@
 <?php
 
-require_once '../lib/bootstrap.php';
+require_once __DIR__.'/../lib/bootstrap.php';
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem(__DIR__.'/../web'));
 
