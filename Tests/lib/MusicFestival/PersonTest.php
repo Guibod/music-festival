@@ -54,6 +54,18 @@ class PersonTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
+   * @covers MusicFestival\Person::getSocialAccounts
+   */
+  public function testGetSocialAccounts() {
+    $this->assertInternalType('array', $this->object->getSocialAccounts());
+    $this->assertCount(0, $this->object->getSocialAccounts());
+
+    $this->object->setSocialAccounts(array('niiek','nieek'));
+
+    $this->assertEquals(array('niiek','nieek'), $this->object->getSocialAccounts());
+  }
+
+  /**
    * @covers MusicFestival\Person::fromArray
    */
   public function testFromArray() {

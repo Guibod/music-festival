@@ -7,6 +7,7 @@ class Person extends Entity {
   const ATTR_NAME = 'name';
 
   protected $tracks = array();
+  protected $socials = array();
 
   function __construct()
   {
@@ -38,11 +39,26 @@ class Person extends Entity {
   }
 
   /**
+   * @return array<SocialAccount>
+   */
+  function getSocialAccounts() {
+    return $this->socials;
+  }
+
+  /**
    * @param array $tracks
    */
   function setTracks(array $tracks)
   {
     $this->tracks = $tracks;
+  }
+
+  /**
+   * @param array $socialAccounts
+   */
+  function setSocialAccounts(array $socialAccounts)
+  {
+    $this->socials = $socialAccounts;
   }
 
   /**
@@ -61,6 +77,16 @@ class Person extends Entity {
         $tracks[] = Track::fromArray($track);
       }
       $person->setTracks($tracks);
+    }
+
+    if(isset($array['social']) && is_array($array['social']))
+    {
+      $socials = array();
+      foreach($array['social'] as $social)
+      {
+        $socials[] = SocialAccount::fromUrl($social);
+      }
+      $person->setSocialAccounts($socials);
     }
 
     return $person;
