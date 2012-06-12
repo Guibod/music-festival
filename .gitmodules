@@ -7,3 +7,6 @@
 [submodule "lib/Twig"]
 	path = lib/Twig
 	url = git://github.com/fabpot/Twig.git
+[submodule "lib/LastFm"]
+	path = lib/LastFm
+	url = https://github.com/KnpLabs/php-lastfm-client.git
