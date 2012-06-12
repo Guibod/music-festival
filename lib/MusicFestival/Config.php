@@ -5,6 +5,8 @@ namespace MusicFestival;
 class Config {
   private $settings;
   private $lastfm;
+  private $twig;
+  private $cache;
 
   /**
    * @var Config
@@ -13,7 +15,24 @@ class Config {
 
   function __construct() {
     $this->settings = \Symfony\Component\Yaml\Yaml::parse(\MUSICFESTIVAL_DIR.'/config/settings.yml');
+
     $this->lastfm = new \Lastfm\Client($this->settings['lastfm']['key']);
+    $this->lastfm->setTransport(new \MusicFestival\Transport\CachedCurl());
+
+    $this->twig = new \Twig_Environment(
+      new \Twig_Loader_Filesystem(MUSICFESTIVAL_DIR.'/templates'),
+      array('cache' => MUSICFESTIVAL_DIR.'/cache/twig')
+    );
+
+    $this->cache = new \Cache_Lite(array(
+      'cacheDir' => MUSICFESTIVAL_DIR.'/cache/twig',
+      'lifeTime' => 3600
+    ));
+
+    if(isset($_GET['nocache']))
+    {
+      $this->cache->setLifeTime(0);
+    }
   }
 
   /**
@@ -37,16 +56,15 @@ class Config {
    */
   function getTwig()
   {
-    $conf = array();
-    if(!isset($_GET['nocache']) || !$_GET['nocache'])
-    {
-      $conf['cache'] = MUSICFESTIVAL_DIR.'/cache';
-    }
+    return $this->twig;
+  }
 
-    return new \Twig_Environment(
-      new \Twig_Loader_Filesystem(MUSICFESTIVAL_DIR.'/templates'),
-      $conf
-    );
+  /**
+   * @return \Cache_Lite
+   */
+  function getCache()
+  {
+    return $this->cache;
   }
 
   /**
