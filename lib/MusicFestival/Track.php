@@ -10,17 +10,19 @@ class Track extends \MusicFestival\Entity {
   const ATTR_YEAR = 'year';
   const ATTR_COVER = 'cover';
   const ATTR_MEMO = 'memo';
+  const ATTR_MBID = 'mbid';
 
   protected $links = array();
 
   function __construct() {
     parent::__construct(array(
       self::ATTR_TITLE,
+      self::ATTR_MBID,
       self::ATTR_ARTIST,
       self::ATTR_ALBUM,
       self::ATTR_YEAR,
       self::ATTR_MEMO,
-      self::ATTR_COVER
+      self::ATTR_COVER,
     ));
   }
 
@@ -29,6 +31,13 @@ class Track extends \MusicFestival\Entity {
    */
   function getTitle() {
     return $this->getAttribute(self::ATTR_TITLE);
+  }
+
+  /**
+   * @return string
+   */
+  function getMbid() {
+    return $this->getAttribute(self::ATTR_MBID);
   }
 
   /**
