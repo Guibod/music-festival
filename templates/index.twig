@@ -13,9 +13,18 @@
           <li>{{ track.artist }}</li>
           <li>{{ track.album }}</li>
           <li>{{ track.memo }}</li>
+
+          <li>tags</li>
           <ul>
           {% for tag,tagurl in track.tags %}
               <li><a href="{{tagurl}}">{{ tag }}</a></li>
+          {% endfor %}
+          </ul>
+
+          <li>links</li>
+          <ul>
+          {% for link,linkurl in track.links %}
+              <li><a href="{{linkurl}}">{{ link }}</a></li>
           {% endfor %}
           </ul>
         </ul>

@@ -99,11 +99,11 @@ class Track extends \MusicFestival\Entity {
   static function fromArray(array $array) {
     $track = new Track();
     $track->setAttributes($array);
-    $track->overloadFromLastFm();
+    $track->expandFromLastFm();
     return $track;
   }
 
-  protected function overloadFromLastFm()
+  public function expandFromLastFm()
   {
     if($this->getMbid())
     {
@@ -133,10 +133,9 @@ class Track extends \MusicFestival\Entity {
 
       $links = $this->getLinks();
       $links['lastfm'] = $track['url'];
-      $links['spotify']= "http://www.lastfm.fr/affiliate/byid/9/{$track['url']}/6/trackpage/{$track['url']}";
-      $links['deezer'] = "http://www.lastfm.fr/affiliate/byid/9/{$track['url']}/1000168/trackpage/{$track['url']}";
-      $links['hypemachine'] = "http://www.lastfm.fr/affiliate/byid/9/{$track['url']}/4/trackpage/{$track['url']}";
-
+      $links['spotify']= "http://www.lastfm.fr/affiliate/byid/9/{$track['id']}/6/trackpage/{$track['id']}";
+      $links['deezer'] = "http://www.lastfm.fr/affiliate/byid/9/{$track['id']}/1000168/trackpage/{$track['id']}";
+      $links['hypemachine'] = "http://www.lastfm.fr/affiliate/byid/9/{$track['id']}/4/trackpage/{$track['id']}";
       $this->setLinks($links);
     }
   }
