@@ -14,6 +14,7 @@ class Config {
   private static $_instance = null;
 
   function __construct() {
+    \Symfony\Component\Yaml\Yaml::enablePhpParsing();
     $this->settings = \Symfony\Component\Yaml\Yaml::parse(\MUSICFESTIVAL_DIR.'/config/settings.yml');
 
     $this->lastfm = new \Lastfm\Client($this->settings['lastfm']['key']);
@@ -21,13 +22,10 @@ class Config {
 
     $this->twig = new \Twig_Environment(
       new \Twig_Loader_Filesystem(MUSICFESTIVAL_DIR.'/templates'),
-      array('cache' => MUSICFESTIVAL_DIR.'/cache/twig')
+      $this->settings['twig']
     );
 
-    $this->cache = new \Cache_Lite(array(
-      'cacheDir' => MUSICFESTIVAL_DIR.'/cache/twig',
-      'lifeTime' => 3600
-    ));
+    $this->cache = new \Cache_Lite($this->settings['cache']);
 
     if(isset($_GET['nocache']))
     {
@@ -78,15 +76,25 @@ class Config {
     return self::$_instance;
   }
 
-  static function read($file) {
-    $yaml = new \Symfony\Component\Yaml\Yaml();
-    $config = $yaml->parse($file);
+  public function getPersons() {
+    $settings = \MusicFestival\Config::getInstance()->getSettings();
+    $directory = $settings['playlist']['dir'];
+    $persons = array();
 
-    $output = array();
+    if ($handle = opendir($directory)) {
+      while (false !== ($entry = readdir($handle))) {
+        try {
+          if(preg_match('/^\S+.yml$/i', $entry)) {
+            $persons[$entry] = \MusicFestival\Person::fromYaml($directory.DIRECTORY_SEPARATOR.$entry);
+          }
+        } catch (Exception $e) {
+          // that's ok
+        }
+      }
+      closedir($handle);
 
-      $output[] = \MusicFestival\Person::fromArray($config);
-
-    return $output;
+      \ksort($persons);
+      return $persons;
+    }
   }
-
 }

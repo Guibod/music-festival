@@ -12,7 +12,7 @@
         <ul>
           <li>{{ track.artist }}</li>
           <li>{{ track.album }}</li>
-          <li>{{ track.memo }}</li>
+          <li>{{ track.memo|raw }}</li>
 
           <li>tags</li>
           <ul>
@@ -23,8 +23,8 @@
 
           <li>links</li>
           <ul>
-          {% for link,linkurl in track.links %}
-              <li><a href="{{linkurl}}">{{ link }}</a></li>
+          {% for link in track.links %}
+              <li>{{ link|raw }}</li>
           {% endfor %}
           </ul>
         </ul>

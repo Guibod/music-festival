@@ -11,6 +11,9 @@ tracks:
     tags:
       test: value
     links:
+      - http://www.lastfm.fr/music/Serge+Gainsbourg/_/La+Javanaise?ac=java
+      - http://open.spotify.com/track/0WbnfhROV7dmW5U1Jzju5B
+      - http://www.deezer.com/fr/music/track/916421
       - http://www.youtube.com/watch?v=3kicpfXUOXc
       - http://www.dailymotion.com/video/x22c2v_gainsbourg-serge-la-javanaise_music
       - http://soundcloud.com/humanoide/javanaise
@@ -22,6 +25,10 @@ tracks:
     album:  L'Aventurier
     mbid:   02804644-68e5-4299-a5de-58d514c0f3db
     memo:   Bob morane contre doux chacal l'aventurier contre douze guerriers!
+    links:
+      - http://www.lastfm.fr/music/Indochine/L'Aventurier/L'Aventurier
+      - http://www.lastfm.fr/affiliate/byid/9/1277313/6/trackpage/1277313
+      - http://open.spotify.com/track/2J5cHjVu2AOm1xwqrG4QuV
 
   3:
     title:  Pas de cover

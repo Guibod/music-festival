@@ -36,10 +36,14 @@ abstract class Entity {
    * @param string $key
    * @param mixed $value
    */
-  function setAttribute($key, $value) {
+  function setAttribute($key, $value, $doNotOverride = false) {
     if (!$this->hasAttribute($key)) {
       throw new \UnexpectedValueException(sprintf("Unknown attribute '%s' on '%s' object.", $key, get_class($this)));
     }
+    if($this->attributes[$key] && $doNotOverride) {
+      return;
+    }
+
     $this->attributes[$key] = $value;
   }
 

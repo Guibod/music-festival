@@ -18,15 +18,28 @@ class DefaultLink implements \MusicFestival\Link\Link {
   }
 
   public function getTemplate() {
-    return "default";
+    return "link/default.twig";
   }
 
   public function getUrl() {
     return $this->url;
   }
 
+  public function isValid() {
+    return true;
+  }
+
   public static function isMatchingUrl($url) {
     return (bool) $url;
   }
 
+  public function __toString() {
+    try {
+      $twig = \MusicFestival\Config::getInstance()->getTwig();
+      return  $twig->render($this->getTemplate(), array('link' => $this));
+    } catch (\Exception $e) {
+      return $e->getMessage();
+    }
+
+  }
 }

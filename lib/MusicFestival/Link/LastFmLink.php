@@ -12,6 +12,6 @@ class LastFmLink extends \MusicFestival\Link\DefaultLink {
   }
 
   public static function isMatchingUrl($url) {
-    return (bool) preg_match('#http://www.lastfm.fr/music/.*#', $url);
+    return (bool) preg_match('#http://www.last(\.fm|fm\.fr)/music/.*#', $url);
   }
 }

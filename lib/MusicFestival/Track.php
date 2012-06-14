@@ -7,11 +7,11 @@ class Track extends \MusicFestival\Entity {
   const ATTR_TITLE = 'title';
   const ATTR_ARTIST = 'artist';
   const ATTR_ALBUM = 'album';
-  const ATTR_YEAR = 'year';
   const ATTR_COVER = 'cover';
   const ATTR_MEMO = 'memo';
   const ATTR_MBID = 'mbid';
   const ATTR_TAGS = 'tags';
+  const ATTR_LINKS = 'links';
 
   protected $links = array();
 
@@ -21,10 +21,10 @@ class Track extends \MusicFestival\Entity {
       self::ATTR_MBID,
       self::ATTR_ARTIST,
       self::ATTR_ALBUM,
-      self::ATTR_YEAR,
       self::ATTR_MEMO,
       self::ATTR_COVER,
       self::ATTR_TAGS,
+      self::ATTR_LINKS,
     ));
   }
 
@@ -71,35 +71,33 @@ class Track extends \MusicFestival\Entity {
   }
 
   /**
-   * @return arary
+   * @return array
    */
   function getTags() {
     return $this->getAttribute(self::ATTR_TAGS);
   }
 
-
   /**
    * @return array<Link>
    */
   function getLinks() {
-    return $this->links;
-  }
-
-  /**
-   * @param array $links
-   */
-  function setLinks(array $links) {
-    $this->links = $links;
+    $links = array();
+    foreach($this->getAttribute(self::ATTR_LINKS) as $url) {
+      $links[] = \MusicFestival\Link\Factory::fromUrl($url);
+    }
+    return $links;
   }
 
   /**
    * @param array $array
    * @return \MusicFestival\Track
    */
-  static function fromArray(array $array) {
+  static function fromArray(array $array, $expand = true) {
     $track = new Track();
     $track->setAttributes($array);
-    $track->expandFromLastFm();
+    if($expand) {
+      $track->expandFromLastFm();
+    }
     return $track;
   }
 
@@ -114,10 +112,14 @@ class Track extends \MusicFestival\Entity {
         return;
       }
 
-      $this->setAttribute(self::ATTR_TITLE, $track['name']);
-      $this->setAttribute(self::ATTR_ARTIST, $track['artist']['name']);
-      $this->setAttribute(self::ATTR_ALBUM, $track['album']['title']);
-      $this->setAttribute(self::ATTR_COVER, $track['album']['image'][2]['#text']);
+      $this->setAttribute(self::ATTR_TITLE, $track['name'], true);
+      $this->setAttribute(self::ATTR_ARTIST, $track['artist']['name'], true);
+
+      if(isset($track['album']))
+      {
+        $this->setAttribute(self::ATTR_ALBUM, $track['album']['title'], true);
+        $this->setAttribute(self::ATTR_COVER, $track['album']['image'][2]['#text'], true);
+      }
 
       if(isset($track['toptags']['tag']))
       {
@@ -130,13 +132,13 @@ class Track extends \MusicFestival\Entity {
         $this->setAttribute(self::ATTR_TAGS, $tags);
       }
 
+      $links = $this->getAttribute(self::ATTR_LINKS);
+      $links[] = $track['url'];
+      $links[]= "http://www.last.fm/affiliate/byid/9/{$track['id']}/6/trackpage/{$track['id']}";
+      $links[] = "http://www.last.fm/affiliate/byid/9/{$track['id']}/1000168/trackpage/{$track['id']}";
+      $links[] = "http://www.last.fm/affiliate/byid/9/{$track['id']}/4/trackpage/{$track['id']}";
 
-      $links = $this->getLinks();
-      $links['lastfm'] = $track['url'];
-      $links['spotify']= "http://www.lastfm.fr/affiliate/byid/9/{$track['id']}/6/trackpage/{$track['id']}";
-      $links['deezer'] = "http://www.lastfm.fr/affiliate/byid/9/{$track['id']}/1000168/trackpage/{$track['id']}";
-      $links['hypemachine'] = "http://www.lastfm.fr/affiliate/byid/9/{$track['id']}/4/trackpage/{$track['id']}";
-      $this->setLinks($links);
+      $this->setAttribute(self::ATTR_LINKS, $links);
     }
   }
 }

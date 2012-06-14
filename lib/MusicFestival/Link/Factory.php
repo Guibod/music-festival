@@ -7,6 +7,11 @@ class Factory {
   static function getDefaultClasses() {
     return array(
       '\MusicFestival\Link\LastFmLink',
+      '\MusicFestival\Link\YouTubeLink',
+      '\MusicFestival\Link\SpotifyLink',
+      '\MusicFestival\Link\DeezerLink',
+      '\MusicFestival\Link\HypemLink',
+      '\MusicFestival\Link\LastFmAffiliateLink',
       '\MusicFestival\Link\DefaultLink',
     );
   }

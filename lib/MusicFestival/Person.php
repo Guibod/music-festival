@@ -91,4 +91,19 @@ class Person extends Entity {
 
     return $person;
   }
+
+  /**
+   * @param string $file
+   * @return type
+   */
+  static function fromYaml($file) {
+    $yaml = new \Symfony\Component\Yaml\Yaml();
+    $config = $yaml->parse($file);
+    if($config == $file)
+    {
+      throw new \Exception("Unable to read $file.");
+    }
+
+    return self::fromArray($config);
+  }
 }
