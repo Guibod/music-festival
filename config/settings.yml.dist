@@ -1,3 +1,19 @@
 lastfm:
   key:    #your api key goes here
   secret: #your secret goes here
+
+playlist:
+  dir:      <?php echo MUSICFESTIVAL_DIR; ?>/config/bom
+
+twig:
+  debug:            true
+  charset:          utf-8
+  cache:            <?php echo MUSICFESTIVAL_DIR; ?>/cache/twig/
+  auto_reload:      true
+  strict_variables: false
+  autoescape:       true
+  optimizations:    1
+
+cache:
+  cacheDir:         <?php echo MUSICFESTIVAL_DIR; ?>/cache/lite
+  lifeTime:         3600
