@@ -1,0 +1,14 @@
+Loic.
+
+J'ai réparé les puces qu'on voyait pas pas dans le projet), j'ai changé les couleurs temporairement pour y voir plus clair.
+
+J'ai avancé sur le chose, mais aussi chargé les 17 yaml associé, avec les players. Et c'est LOURD. Ma machine meurt. :D
+
+J'ose pas imagine ce que ça donnera avec le player spotify + deezer + video flash embeddé
+
+Je me rend compte qu'il est nécessaire de porter les players dans un tooltip chargé en AJAX.
+J'ai trouvé une lib sympa: http://plugins.learningjquery.com/cluetip/demo/#
+
+Pour l'aspect display j'ai ajouté les tags mais je m'en suis pas sorti avec des <li>. C'est laid.
+
+J'ai aussi l'impression l'avoir pété le slideshow.
