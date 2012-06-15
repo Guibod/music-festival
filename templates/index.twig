@@ -8,7 +8,7 @@
     <body>
       <div id="st_main" class="st_main">
         <div class="st_overlay"></div>
-        <h1>Bli bla blou</h1>
+        <h1>Music Festival</h1>
         <ul id="st_nav" class="st_navigation">
           {% for person in persons %}
             <li class="album">
@@ -20,7 +20,7 @@
                     <div class="st_thumbs">
                       {% for track in person.tracks %}
                         <div class="track">
-                          <img src="http://userserve-ak.last.fm/serve/174s/58447065.jpg" alt="images/album/1.jpg"/>
+                          <img src="{{ track.cover }}" title="{{ track.title }}"/>
                           <h3>{{ track.title }}</h3>
                           <ul>
                             <li>{{ track.artist }}</li>

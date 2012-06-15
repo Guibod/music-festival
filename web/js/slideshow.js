@@ -43,9 +43,9 @@ $(function() {
           hideThumbs();
           $this.addClass('st_arrow_up').removeClass('st_arrow_down');
           var $elem = $this.closest('li');
-          $elem.addClass('current').animate({'height':'250px'},500);
+          $elem.addClass('current').animate({'height':'350px'},500);
           var $thumbs_wrapper = $this.parent().next();
-          $thumbs_wrapper.show(200);
+          $thumbs_wrapper.show(300);
   });
   $list.find('.st_arrow_up').live('click',function(){
           var $this = $(this);
@@ -79,7 +79,7 @@ $(function() {
                   $(this).removeClass('current');
           })
           .find('.st_thumbs_wrapper')
-          .hide(200)
+          .hide(300)
           .andSelf()
           .find('.st_link span')
           .addClass('st_arrow_down')
