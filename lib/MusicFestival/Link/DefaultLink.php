@@ -29,6 +29,14 @@ class DefaultLink implements \MusicFestival\Link\Link {
     return true;
   }
 
+  public function hasPlayer() {
+    return false;
+  }
+
+  public function getPlayer() {
+    return null;
+  }
+
   public static function isMatchingUrl($url) {
     return (bool) $url;
   }

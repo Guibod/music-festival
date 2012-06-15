@@ -79,15 +79,15 @@ class Person extends Entity {
       $person->setTracks($tracks);
     }
 
-    if(isset($array['social']) && is_array($array['social']))
-    {
-      $socials = array();
-      foreach($array['social'] as $social)
-      {
-        $socials[] = SocialAccount::fromUrl($social);
-      }
-      $person->setSocialAccounts($socials);
-    }
+//    if(isset($array['social']) && is_array($array['social']))
+//    {
+//      $socials = array();
+//      foreach($array['social'] as $social)
+//      {
+//        $socials[] = SocialAccount::fromUrl($social);
+//      }
+//      $person->setSocialAccounts($socials);
+//    }
 
     return $person;
   }

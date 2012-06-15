@@ -83,10 +83,22 @@ class Track extends \MusicFestival\Entity {
   function getLinks() {
     $links = array();
     foreach($this->getAttribute(self::ATTR_LINKS) as $url) {
-      $links[] = \MusicFestival\Link\Factory::fromUrl($url);
+      $link = \MusicFestival\Link\Factory::fromUrl($url);
+      $links[$link->getName()] = $link;
     }
     return $links;
   }
+
+  function getPlayers() {
+    $players = array();
+    foreach ($this->getLinks() as $link) {
+      if($link->hasPlayer()) {
+        $players[] = $link->getPlayer();
+      }
+    }
+    return $players;
+  }
+
 
   /**
    * @param array $array
@@ -124,9 +136,11 @@ class Track extends \MusicFestival\Entity {
       if(isset($track['toptags']['tag']))
       {
         $tags = $this->getAttribute(self::ATTR_TAGS);
-        foreach($track['toptags']['tag'] as $tag)
-        {
-          $tags[$tag['name']] = $tag['url'];
+        if(isset($track['toptags']['tag']) && is_array($track['toptags']['tag'])) {
+          foreach($track['toptags']['tag'] as $tag)
+          {
+            $tags[$tag['name']] = $tag['url'];
+          }
         }
 
         $this->setAttribute(self::ATTR_TAGS, $tags);

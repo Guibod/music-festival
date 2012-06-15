@@ -95,4 +95,18 @@ class LastFmAffiliateLink implements \MusicFestival\Link\Link {
   public function isValid() {
     return $this->valid;
   }
+
+  public function hasPlayer() {
+    if($this->valid) {
+      return $this->link->hasPlayer();
+    }
+    return false;
+  }
+
+  public function getPlayer() {
+    if($this->valid) {
+      return $this->link->getPlayer();
+    }
+    return null;
+  }
 }

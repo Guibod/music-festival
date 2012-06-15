@@ -21,13 +21,26 @@
                     <div class="st_thumbs">
                       {% for track in person.tracks %}
                         <div class="track">
-                          <img src="{{ track.cover }}" title="{{ track.title }}"/>
                           <h3>{{ track.title }}</h3>
-                          <ul>
-                            <li>{{ track.artist }}</li>
-                            <li>{{ track.album }}</li>
-                            <li class="memo">{{ track.memo|raw }}</li>
-                          </ul>
+
+                          <img src="{{ track.cover }}" title="{{ track.title }}"/>
+
+                          <div class="extra">
+                            by {{ track.artist }}
+                            from {{ track.album }}
+                         </div>
+
+
+                         <!-- {{ track.memo|raw }} -->
+                          <div class="tags">
+                          {% for tagName, tagLink in track.tags %}
+                              <a class="tag" href="{{tagLink}}" rel="tag">{{tagName}}</a>
+                          {% endfor %}
+                          </div>
+
+                          {% for player in track.players %}
+                            {{ player|raw }}
+                          {% endfor %}
                         </div>
                       {% endfor %}
                     </div>

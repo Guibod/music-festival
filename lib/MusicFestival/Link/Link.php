@@ -9,6 +9,8 @@ interface Link {
   function getUrl();
   function getTemplate();
   function isValid();
+  function hasPlayer();
+  function getPlayer();
   function __toString();
 
   static function isMatchingUrl($url);

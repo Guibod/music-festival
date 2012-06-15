@@ -12,6 +12,17 @@ class SpotifyLink extends \MusicFestival\Link\DefaultLink {
     }
   }
 
+  public function hasPlayer()
+  {
+    return true;
+  }
+
+  public function getPlayer()
+  {
+    return new \MusicFestival\Player\SpotifyPlayer($this);
+  }
+
+
   public function getSpotifyId() {
     return $this->id;
   }
