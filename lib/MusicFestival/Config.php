@@ -85,7 +85,8 @@ class Config {
       while (false !== ($entry = readdir($handle))) {
         try {
           if(preg_match('/^\S+.yml$/i', $entry)) {
-            $persons[$entry] = \MusicFestival\Person::fromYaml($directory.DIRECTORY_SEPARATOR.$entry);
+            $person = \MusicFestival\Person::fromYaml($directory.DIRECTORY_SEPARATOR.$entry);
+            $persons[$person->getId()] = $person;
           }
         } catch (Exception $e) {
           // that's ok

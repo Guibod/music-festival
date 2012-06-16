@@ -16,7 +16,7 @@ class YouTubeLink extends \MusicFestival\Link\DefaultLink {
   }
 
   public static function isMatchingUrl($url) {
-    return (bool) preg_match('#http://www.youtube.com/.*#', $url);
+    return (bool) preg_match('#http://(www.)?youtu(be\.com|\.be)/.*#', $url);
   }
 
   public function hasPlayer() {

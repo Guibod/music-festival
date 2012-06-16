@@ -4,7 +4,7 @@ namespace MusicFestival\Link;
 
 class LastFmLink extends \MusicFestival\Link\DefaultLink {
   public function getIcon() {
-    return "images/link/lasfm.png";
+    return "images/link/lastfm.png";
   }
 
   public function getName() {

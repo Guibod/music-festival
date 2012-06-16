@@ -2,19 +2,19 @@
 
 namespace MusicFestival\Link;
 
-class GrooveSharkLink extends \MusicFestival\Link\DefaultLink {
+class GrooveShark2Link extends \MusicFestival\Link\DefaultLink {
   public function getIcon() {
     return "images/link/grooveshark.png";
   }
 
     public function hasPlayer()
   {
-    return true;
+    return false; //broken atm
   }
 
   public function getPlayer()
   {
-    return new \MusicFestival\Player\GrooveSharkPlayer($this);
+    //return new \MusicFestival\Player\GrooveSharkPlayer($this);
   }
 
   public function getName() {
@@ -26,6 +26,6 @@ class GrooveSharkLink extends \MusicFestival\Link\DefaultLink {
   }
 
   public static function isMatchingUrl($url) {
-    return (bool) preg_match('#http://(www.)?grooveshark.com/s/.+#', $url);
+    return (bool) preg_match('#http://(www.)?grooveshark.com/.+#', $url);
   }
 }

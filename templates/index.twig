@@ -15,7 +15,7 @@
         <div class="st_overlay"></div>
         <h1>Music Festival</h1>
         <ul id="st_nav" class="st_navigation">
-          {% for person in persons %}
+          {% for personId,person in persons %}
             <li class="album">
                 <span class="st_link">
                     {{ person.name }}
@@ -27,13 +27,15 @@
                         <div class="track">
                           <h3>{{ track.title }}</h3>
 
-                          <div class="main">
-                            <img class="cover" src="{{ track.cover | default("images/no_cover.jpg") }}" title="{{ track.title }}"/>
 
-                            <div class="extra">
-                              by {{ track.artist }}
-                              from {{ track.album }}
-                            </div>
+
+                          <div class="main">
+
+                            <a title="Memo" rel="memo.php?person={{personId}}&track={{trackId}}" href="memo.php?person={{personId}}&track={{trackId}}" class="laius">
+                              <img class="cover" src="{{ track.cover | default("images/no_cover.jpg") }}" title="{{ track.title }}"/>
+                            </a>
+
+                            <div class="extra">{{ track.artist }} - {{ track.album }}</div>
 
                             <div class="tags">
                             {% for tagName, tagLink in track.tags %}
@@ -45,7 +47,7 @@
                           <div class="rcolumn">
                           {% for linkId, link in track.links %}
                             {% if link.hasPlayer %}
-                              <a title="{{link.name}}" rel="link.php?person={{person.id}}&track={{trackId}}&link={{linkId}}" href="link.php?person={{person.name}}&track={{trackId}}&link={{linkId}}" class="link hasPlayer">
+                              <a title="{{link.name}}" rel="link.php?person={{personId}}&track={{trackId}}&link={{linkId}}" href="link.php?person={{personId}}&track={{trackId}}&link={{linkId}}" class="link hasPlayer">
                             {% else %}
                               <a title="{{link.name}}" href="{{ link.url }}" target="_blank" class="link">
                             {% endif %}
@@ -67,8 +69,9 @@
       <script type="text/javascript" src="js/slideshow.js"></script>
       <script type="text/javascript">
       $(document).ready(function() {
-        $('a.hasPlayer').cluetip({activation: 'click', width: 500, closePosition: 'title', sticky: true });
-        $('.cover').cluetip({activation: 'hover', });
+        $('.laius').cluetip();
+        $('.hasPlayer').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: true });
+
       });
       </script>
     </body>

@@ -12,6 +12,7 @@ class Factory {
       '\MusicFestival\Link\DeezerLink',
       '\MusicFestival\Link\VimeoLink',
       '\MusicFestival\Link\HypemLink',
+      '\MusicFestival\Link\GrooveShark2Link',
       '\MusicFestival\Link\LastFmAffiliateLink',
       '\MusicFestival\Link\DefaultLink',
     );
