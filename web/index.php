@@ -2,8 +2,13 @@
 
 require_once __DIR__.'/../lib/bootstrap.php';
 
-$persons = \MusicFestival\Config::getInstance()->getPersons();
+$config  = \MusicFestival\Config::getInstance();
+$persons = $config->getPersons();
 
-echo \MusicFestival\Config::getInstance()->getTwig()->render('index.twig', array('persons' => $persons));
+if(!$config->getSetting('playlist','open')) {
+  throw new Exception("Playlist is not yet opened to public.");
+}
+
+echo $config->getTwig()->render('index.twig', array('persons' => $persons));
 
 

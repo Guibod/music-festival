@@ -41,6 +41,18 @@ class Config {
     return $this->settings;
   }
 
+  function getSetting() {
+    $settings = $this->settings;
+    foreach(\func_get_args() as $arg) {
+      if(!isset($settings[$arg])) {
+        return null;
+      }
+
+      $settings = $settings[$arg];
+    }
+    return $settings;
+  }
+
   /**
    * @return \Lastfm\Client
    */

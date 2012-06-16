@@ -5,6 +5,7 @@ namespace MusicFestival;
 class Person extends Entity {
   const ATTR_ID   = 'id';
   const ATTR_NAME = 'name';
+  const ATTR_SECRET = 'secret';
 
   protected $tracks = array();
   protected $socials = array();
@@ -13,7 +14,8 @@ class Person extends Entity {
   {
     parent::__construct(array(
       self::ATTR_NAME,
-      self::ATTR_ID
+      self::ATTR_ID,
+      self::ATTR_SECRET,
     ));
     $this->setAttribute(self::ATTR_ID, $id);
   }
@@ -30,6 +32,13 @@ class Person extends Entity {
    */
   function getId() {
     return $this->getAttribute(self::ATTR_ID);
+  }
+
+  /**
+   * @return string
+   */
+  function getSecret() {
+    return $this->getAttribute(self::ATTR_SECRET);
   }
 
   /**
@@ -106,7 +115,7 @@ class Person extends Entity {
 
   /**
    * @param string $file
-   * @return type
+   * @return \MusicFestival\Person
    */
   static function fromYaml($file) {
     $yaml = new \Symfony\Component\Yaml\Yaml();
@@ -120,6 +129,12 @@ class Person extends Entity {
     return self::fromArray(pathinfo($file, PATHINFO_FILENAME), $config);
   }
 
+  /**
+   *
+   * @param string $name
+   * @return \MusicFestival\Person
+   * @throws \Exception
+   */
   static function fromName($name) {
     $settings = \MusicFestival\Config::getInstance()->getSettings();
     $directory = $settings['playlist']['dir'];
