@@ -147,17 +147,16 @@ class Track extends \MusicFestival\Entity {
         $this->setAttribute(self::ATTR_COVER, $track['album']['image'][2]['#text'], true);
       }
 
-      if(isset($track['toptags']['tag']))
-      {
-        $tags = $this->getAttribute(self::ATTR_TAGS);
-        if(isset($track['toptags']['tag']) && is_array($track['toptags']['tag'])) {
-          foreach($track['toptags']['tag'] as $tag)
-          {
-            $tags[$tag['name']] = $tag['url'];
-          }
-        }
+      $this->addTags($track['toptags']);
 
-        $this->setAttribute(self::ATTR_TAGS, $tags);
+      // extend tags with artist
+      if(isset($track['artist']['mbid'])) {
+        try {
+          $topTags = $client->getArtistService()->getTopTags(array('mbid' => $track['artist']['mbid']));
+          $this->addTags($topTags);
+        } catch (Exception $e) {
+          // that's ok
+        }
       }
 
       $links = $this->getAttribute(self::ATTR_LINKS);
@@ -167,6 +166,27 @@ class Track extends \MusicFestival\Entity {
       $links[] = "http://www.last.fm/affiliate/byid/9/{$track['id']}/4/trackpage/{$track['id']}";
 
       $this->setAttribute(self::ATTR_LINKS, $links);
+    }
+  }
+
+  function addTags($input, $max = 5) {
+    if(!is_array($input)) {
+      return;
+    }
+    if(isset($input['tag']) && is_array($input['tag']))
+    {
+      $tags = $this->getAttribute(self::ATTR_TAGS);
+      foreach($input['tag'] as $tag)
+      {
+        if(!isset($tags[$tag['name']])) {
+          $tags[$tag['name']] = $tag['url'];
+          if($max-- <= 0) {
+            break;
+          }
+        }
+      }
+
+      $this->setAttribute(self::ATTR_TAGS, $tags);
     }
   }
 }
