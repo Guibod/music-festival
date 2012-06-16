@@ -26,6 +26,8 @@ class Track extends \MusicFestival\Entity {
       self::ATTR_TAGS,
       self::ATTR_LINKS,
     ));
+
+    $this->setAttribute(self::ATTR_TAGS, array());
   }
 
   /**
@@ -73,8 +75,9 @@ class Track extends \MusicFestival\Entity {
   /**
    * @return array
    */
-  function getTags() {
-    return $this->getAttribute(self::ATTR_TAGS);
+  function getTags($limit = 10) {
+    $tags = $this->getAttribute(self::ATTR_TAGS);
+    return array_slice($tags, 0, $limit, true);
   }
 
   /**
@@ -150,7 +153,7 @@ class Track extends \MusicFestival\Entity {
       $this->addTags($track['toptags']);
 
       // extend tags with artist
-      if(isset($track['artist']['mbid'])) {
+      if(isset($track['artist']['mbid']) && $track['artist']['mbid']) {
         try {
           $topTags = $client->getArtistService()->getTopTags(array('mbid' => $track['artist']['mbid']));
           $this->addTags($topTags);
@@ -169,7 +172,7 @@ class Track extends \MusicFestival\Entity {
     }
   }
 
-  function addTags($input, $max = 5) {
+  function addTags($input) {
     if(!is_array($input)) {
       return;
     }
@@ -180,9 +183,6 @@ class Track extends \MusicFestival\Entity {
       {
         if(!isset($tags[$tag['name']])) {
           $tags[$tag['name']] = $tag['url'];
-          if($max-- <= 0) {
-            break;
-          }
         }
       }
 

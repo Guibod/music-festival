@@ -14,11 +14,14 @@
       <div id="st_main" class="st_main">
         <div class="st_overlay"></div>
         <h1>Music Festival</h1>
+
+        <a href="tagcloud.php">Tag cloud for everyone</a>
+
         <ul id="st_nav" class="st_navigation">
           {% for personId,person in persons %}
             <li class="album">
                 <span class="st_link">
-                    {{ person.name }}
+                    {{ person.name }} (<a href="tagcloud.php?who={{personId}}">Tag cloud</a>)
                     <span class="st_arrow_down"></span>
                 </span>
                 <div class="st_wrapper st_thumbs_wrapper">
@@ -28,6 +31,7 @@
                       {% endfor %}
                     </div>
                 </div>
+                <textarea>{{person.getYaml()}}</textarea>
             </li>
         {% endfor %}
         </ul>
