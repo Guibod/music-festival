@@ -11,7 +11,19 @@ class YouTubeLink extends \MusicFestival\Link\DefaultLink {
     return "YouTube";
   }
 
+  public function getTemplate() {
+    return "link/youtube.twig";
+  }
+
   public static function isMatchingUrl($url) {
     return (bool) preg_match('#http://www.youtube.com/.*#', $url);
+  }
+
+  public function hasPlayer() {
+    return true;
+  }
+
+  public function getPlayer() {
+    return new \MusicFestival\Player\YouTubePlayer($this);
   }
 }

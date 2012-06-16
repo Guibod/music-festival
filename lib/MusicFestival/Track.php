@@ -80,13 +80,27 @@ class Track extends \MusicFestival\Entity {
   /**
    * @return array<Link>
    */
-  function getLinks() {
+  function getLinks($invalid = false) {
     $links = array();
     foreach($this->getAttribute(self::ATTR_LINKS) as $url) {
       $link = \MusicFestival\Link\Factory::fromUrl($url);
-      $links[$link->getName()] = $link;
+      if($invalid || $link->isValid()) {
+        $links[] = $link;
+      }
     }
     return $links;
+  }
+
+  /**
+   * @return Link
+   */
+  function getLink($key) {
+    $links = $this->getAttribute(self::ATTR_LINKS);
+    if(!isset($links[$key])) {
+      throw new \Exception("Link #$key not found for {$this->getTitle()}.");
+    }
+
+    return \MusicFestival\Link\Factory::fromUrl($links[$key]);
   }
 
   function getPlayers() {

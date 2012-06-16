@@ -166,3 +166,7 @@ ul.st_navigation li span.st_arrow_up{
   white-space: nowrap;
   border: 1px solid #D8DFEA;
 }
+
+.cover {
+  width: 150px;
+}

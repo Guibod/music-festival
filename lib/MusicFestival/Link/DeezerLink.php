@@ -7,8 +7,22 @@ class DeezerLink extends \MusicFestival\Link\DefaultLink {
     return "http://media.abonnez-vous.orange.fr/medias/visuel/image/logo-deezer-mini.gif";
   }
 
+    public function hasPlayer()
+  {
+    return true;
+  }
+
+  public function getPlayer()
+  {
+    return new \MusicFestival\Player\DeezerPlayer($this);
+  }
+
   public function getName() {
     return "Deezer";
+  }
+
+  public function getTemplate() {
+    return "link/deezer.twig";
   }
 
   public static function isMatchingUrl($url) {

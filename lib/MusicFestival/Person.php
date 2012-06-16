@@ -9,12 +9,13 @@ class Person extends Entity {
   protected $tracks = array();
   protected $socials = array();
 
-  function __construct()
+  function __construct($id)
   {
     parent::__construct(array(
       self::ATTR_NAME,
       self::ATTR_ID
     ));
+    $this->setAttribute(self::ATTR_ID, $id);
   }
 
   /**
@@ -36,6 +37,17 @@ class Person extends Entity {
    */
   function getTracks() {
     return $this->tracks;
+  }
+
+  /**
+   * @return Track
+   */
+  function getTrack($key) {
+    if(!isset($this->tracks[$key])) {
+      throw new Exception("Track #$key not found for {$this->getName()}.");
+    }
+
+    return $this->tracks[$key];
   }
 
   /**
@@ -65,8 +77,8 @@ class Person extends Entity {
    * @param array $array
    * @return \MusicFestival\Person
    */
-  static function fromArray(array $array) {
-    $person = new Person();
+  static function fromArray($id, array $array) {
+    $person = new Person($id);
     $person->setAttributes($array);
 
     if(isset($array['tracks']) && is_array($array['tracks']))
@@ -98,12 +110,25 @@ class Person extends Entity {
    */
   static function fromYaml($file) {
     $yaml = new \Symfony\Component\Yaml\Yaml();
+
     $config = $yaml->parse($file);
     if($config == $file)
     {
       throw new \Exception("Unable to read $file.");
     }
 
-    return self::fromArray($config);
+    return self::fromArray(pathinfo($file, PATHINFO_FILENAME), $config);
+  }
+
+  static function fromName($name) {
+    $settings = \MusicFestival\Config::getInstance()->getSettings();
+    $directory = $settings['playlist']['dir'];
+
+    $file = $directory.DIRECTORY_SEPARATOR.$name.'.yml';
+
+    if(!\file_exists($file)) {
+      throw new \Exception("No file found for $name.");
+    }
+    return self::fromYaml($file);
   }
 }

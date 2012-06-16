@@ -3,7 +3,11 @@
     <head>
         <title>Music Festival</title>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://cdn.dp.technion.ac.il/cluetip/jquery.cluetip.min.js"></script>
+
         <link rel="stylesheet" type="text/css" href="css/slideshow.css"></link>
+        <link rel="stylesheet" type="text/css" href="http://cdn.dp.technion.ac.il/cluetip/jquery_cluetip.css" />
+
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body>
@@ -19,11 +23,11 @@
                 </span>
                 <div class="st_wrapper st_thumbs_wrapper">
                     <div class="st_thumbs">
-                      {% for track in person.tracks %}
+                      {% for trackId, track in person.tracks %}
                         <div class="track">
                           <h3>{{ track.title }}</h3>
 
-                          <img src="{{ track.cover }}" title="{{ track.title }}"/>
+                          <img class="cover" src="{{ track.cover | default("images/no_cover.jpg") }}" title="{{ track.title }}"/>
 
                           <div class="extra">
                             by {{ track.artist }}
@@ -38,8 +42,14 @@
                           {% endfor %}
                           </div>
 
-                          {% for player in track.players %}
-                            {{ player|raw }}
+                          {% for linkId, link in track.links %}
+                            {% if link.hasPlayer %}
+                              <a title="{{link.name}}" rel="link.php?person={{person.id}}&track={{trackId}}&link={{linkId}}" href="link.php?person={{person.name}}&track={{trackId}}&link={{linkId}}" class="link hasPlayer">
+                            {% else %}
+                              <a title="{{link.name}}" href="{{ link.url }}" target="_blank" class="link">
+                            {% endif %}
+                            <img src="{{link.icon}}" title="{{link.name}}"/>
+                            </a>
                           {% endfor %}
                         </div>
                       {% endfor %}
@@ -51,35 +61,12 @@
       </div>
       <div class="footer">Available on https://github.com/Guibod/music-festival under the <a href="http://sam.zoy.org/wtfpl/">WTFPL</a></div>
 
-      <!--
-        {% for person in persons %}
-        <h2>{{ person.name }}</h2>
-        {% for track in person.tracks %}
-        <h3>{{ track.title }}</h3>
-        <img src="{{ track.cover }}" title="{{ track.title }}"/>
-        <ul>
-          <li>{{ track.artist }}</li>
-          <li>{{ track.album }}</li>
-          <li>{{ track.memo|raw }}</li>
-
-          <li>tags</li>
-          <ul>
-          {% for tag,tagurl in track.tags %}
-              <li><a href="{{tagurl}}">{{ tag }}</a></li>
-          {% endfor %}
-          </ul>
-
-          <li>links</li>
-          <ul>
-          {% for link in track.links %}
-              <li>{{ link|raw }}</li>
-          {% endfor %}
-          </ul>
-        </ul>
-        {% endfor %}
-        {% endfor %}
-        -->
       <script type="text/javascript" src="js/tipsy.js"></script>
       <script type="text/javascript" src="js/slideshow.js"></script>
+      <script type="text/javascript">
+      $(document).ready(function() {
+        $('a.hasPlayer').cluetip({activation: 'click', width: 500, closePosition: 'title', sticky: true });
+      });
+      </script>
     </body>
 </html>
