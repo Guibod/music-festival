@@ -27,21 +27,22 @@
                         <div class="track">
                           <h3>{{ track.title }}</h3>
 
-                          <img class="cover" src="{{ track.cover | default("images/no_cover.jpg") }}" title="{{ track.title }}"/>
+                          <div class="main">
+                            <img class="cover" src="{{ track.cover | default("images/no_cover.jpg") }}" title="{{ track.title }}"/>
 
-                          <div class="extra">
-                            by {{ track.artist }}
-                            from {{ track.album }}
-                         </div>
+                            <div class="extra">
+                              by {{ track.artist }}
+                              from {{ track.album }}
+                            </div>
 
-
-                         <!-- {{ track.memo|raw }} -->
-                          <div class="tags">
-                          {% for tagName, tagLink in track.tags %}
-                              <a class="tag" href="{{tagLink}}" rel="tag">{{tagName}}</a>
-                          {% endfor %}
+                            <div class="tags">
+                            {% for tagName, tagLink in track.tags %}
+                                <a class="tag" href="{{tagLink}}" rel="tag" target="_blank">{{tagName}}</a>
+                            {% endfor %}
+                            </div>
                           </div>
 
+                          <div class="rcolumn">
                           {% for linkId, link in track.links %}
                             {% if link.hasPlayer %}
                               <a title="{{link.name}}" rel="link.php?person={{person.id}}&track={{trackId}}&link={{linkId}}" href="link.php?person={{person.name}}&track={{trackId}}&link={{linkId}}" class="link hasPlayer">
@@ -51,6 +52,7 @@
                             <img src="{{link.icon}}" title="{{link.name}}"/>
                             </a>
                           {% endfor %}
+                          </div>
                         </div>
                       {% endfor %}
                     </div>
@@ -66,6 +68,7 @@
       <script type="text/javascript">
       $(document).ready(function() {
         $('a.hasPlayer').cluetip({activation: 'click', width: 500, closePosition: 'title', sticky: true });
+        $('.cover').cluetip({activation: 'hover', });
       });
       </script>
     </body>

@@ -2,21 +2,21 @@
 
 namespace MusicFestival\Link;
 
-class YouTubeLink extends \MusicFestival\Link\DefaultLink {
+class VimeoLink extends \MusicFestival\Link\DefaultLink {
   public function getIcon() {
-    return "images/link/youtube.png";
+    return "images/link/vimeo.png";
   }
 
   public function getName() {
-    return "YouTube";
+    return "Vimeo";
   }
 
   public function getTemplate() {
-    return "link/youtube.twig";
+    return "link/vimeo.twig";
   }
 
   public static function isMatchingUrl($url) {
-    return (bool) preg_match('#http://www.youtube.com/.*#', $url);
+    return (bool) preg_match('#http://(www.)?vimeo.com/.*#', $url);
   }
 
   public function hasPlayer() {
@@ -24,6 +24,6 @@ class YouTubeLink extends \MusicFestival\Link\DefaultLink {
   }
 
   public function getPlayer() {
-    return new \MusicFestival\Player\YouTubePlayer($this);
+    return new \MusicFestival\Player\VimeoPlayer($this);
   }
 }

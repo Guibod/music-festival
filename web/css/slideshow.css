@@ -133,14 +133,6 @@ ul.st_navigation li span.st_arrow_up{
     box-shadow:0px 0px 10px #000;
 }
 
-.track {
-  float: left;
-  width: 300px;
-  height:300px;
-  border: 1px solid red;
-  padding: 20px;
-}
-
 .memo {
   display: none;
 }
@@ -169,4 +161,23 @@ ul.st_navigation li span.st_arrow_up{
 
 .cover {
   width: 150px;
+  border: 1px solid white;
+}
+
+.track {
+  float: left;
+  width: 230px;
+  height:300px;
+  border: 1px solid red;
+  padding: 10px;
+}
+
+.track .main {
+  width: 180px;
+  float: left;
+}
+
+.track .rcolumn {
+  width: 40px;
+  float: left;
 }

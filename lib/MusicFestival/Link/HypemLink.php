@@ -4,7 +4,7 @@ namespace MusicFestival\Link;
 
 class HypemLink extends \MusicFestival\Link\DefaultLink {
   public function getIcon() {
-    return "http://www.softoxi.com/media/image/000/007/the-hype-machine.jpg";
+    return "images/link/hypem.gif";
   }
 
   public function getName() {

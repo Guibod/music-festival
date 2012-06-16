@@ -10,7 +10,7 @@ class DefaultLink implements \MusicFestival\Link\Link {
   }
 
   public function getIcon() {
-    return "http://www.zug.com/img/icon-link.jpg";
+    return "images/link/default.png";
   }
 
   public function getName() {

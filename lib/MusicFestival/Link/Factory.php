@@ -10,6 +10,7 @@ class Factory {
       '\MusicFestival\Link\YouTubeLink',
       '\MusicFestival\Link\SpotifyLink',
       '\MusicFestival\Link\DeezerLink',
+      '\MusicFestival\Link\VimeoLink',
       '\MusicFestival\Link\HypemLink',
       '\MusicFestival\Link\LastFmAffiliateLink',
       '\MusicFestival\Link\DefaultLink',

@@ -32,7 +32,7 @@ class SpotifyLink extends \MusicFestival\Link\DefaultLink {
   }
 
   public function getIcon() {
-    return "http://www.simounet.net/uploads/2009/02/spotify_logo.jpg";
+    return "images/link/spotify.png";
   }
 
   public function getName() {
