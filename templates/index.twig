@@ -24,38 +24,7 @@
                 <div class="st_wrapper st_thumbs_wrapper">
                     <div class="st_thumbs">
                       {% for trackId, track in person.tracks %}
-                        <div class="track">
-                          <h3>{{ track.title }}</h3>
-
-
-
-                          <div class="main">
-
-                            <a title="Memo" rel="memo.php?person={{personId}}&track={{trackId}}" href="memo.php?person={{personId}}&track={{trackId}}" class="laius">
-                              <img class="cover" src="{{ track.cover | default("images/no_cover.jpg") }}" title="{{ track.title }}"/>
-                            </a>
-
-                            <div class="extra">{{ track.artist }} - {{ track.album }}</div>
-
-                            <div class="tags">
-                            {% for tagName, tagLink in track.tags %}
-                                <a class="tag" href="{{tagLink}}" rel="tag" target="_blank">{{tagName}}</a>
-                            {% endfor %}
-                            </div>
-                          </div>
-
-                          <div class="rcolumn">
-                          {% for linkId, link in track.links %}
-                            {% if link.hasPlayer %}
-                              <a title="{{link.name}}" rel="link.php?person={{personId}}&track={{trackId}}&link={{linkId}}" href="link.php?person={{personId}}&track={{trackId}}&link={{linkId}}" class="link hasPlayer">
-                            {% else %}
-                              <a title="{{link.name}}" href="{{ link.url }}" target="_blank" class="link">
-                            {% endif %}
-                            <img src="{{link.icon}}" title="{{link.name}}"/>
-                            </a>
-                          {% endfor %}
-                          </div>
-                        </div>
+                        {% include 'track.twig' %}
                       {% endfor %}
                     </div>
                 </div>
