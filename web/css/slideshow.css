@@ -44,6 +44,7 @@ h1{
     top:0px;
     left:0px;
 /*    background:transparent url(../images/pattern.png) repeat-x bottom left;*/
+    z-index: -9999;
     opacity:0.3;
 background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
@@ -272,7 +273,7 @@ font-size: 250%;
 		#afd9fa 0%,
 		#588fad);
 	background: -webkit-gradient(
-		linear, left top, left bottom, 
+		linear, left top, left bottom,
 		from(#afd9fa),
 		to(#588fad));
 	border-radius: 6px;

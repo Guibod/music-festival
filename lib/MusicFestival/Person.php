@@ -88,7 +88,7 @@ class Person extends Entity {
    */
   static function fromArray($id, array $array) {
     $person = new Person($id);
-    $person->setAttributes($array);
+    $person->setAttributes($array, true);
 
     if(isset($array['tracks']) && is_array($array['tracks']))
     {
@@ -141,9 +141,15 @@ class Person extends Entity {
 
     $file = $directory.DIRECTORY_SEPARATOR.$name.'.yml';
 
-    if(!\file_exists($file)) {
-      throw new \Exception("No file found for $name.");
+    if(\file_exists($file)) {
+      return self::fromYaml($file);
     }
-    return self::fromYaml($file);
+
+    $file = \MUSICFESTIVAL_DIR.\DIRECTORY_SEPARATOR."cache/yml/$name.yml";
+    if(\file_exists($file)) {
+      return self::fromYaml($file);
+    }
+
+    throw new \Exception("No file found for $name.");
   }
 }

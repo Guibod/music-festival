@@ -12,12 +12,17 @@
     </head>
     <body>
       <div id="st_main" class="st_main">
-        <div class="st_overlay"></div>
+
         <h1>Music Festival</h1>
 
-        <p>
-          <a title="Tag Cloud" rel="tagcloud.php" href="tagcloud.php" class="tagcloud-link button-link tagCloudTooltip">Tag Cloud</a>
-        </p>
+        <ul>
+          <li>
+            <a title="Tag Cloud" rel="tagcloud.php" href="tagcloud.php" class="tagCloudTooltip">Tag Cloud</a>
+          </li>
+          <li>
+            <a title="Test my file" rel="my.php" href="my.php">Test my yaml file.</a>
+          </li>
+        </ul>
 
         <ul id="st_nav" class="st_navigation">
           {% for personId,person in persons %}
@@ -37,6 +42,7 @@
             </li>
         {% endfor %}
         </ul>
+        <div class="st_overlay"></div>
       </div>
       <div class="footer">Available on https://github.com/Guibod/music-festival under the <a href="http://sam.zoy.org/wtfpl/">WTFPL</a></div>
 

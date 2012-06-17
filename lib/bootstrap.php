@@ -7,11 +7,6 @@ use Symfony\Component\ClassLoader\ApcUniversalClassLoader;
 
 $loader = new ApcUniversalClassLoader('apc.prefix.');
 
-/*require_once __DIR__.'/Symfony/Component/ClassLoader/UniversalClassLoader.php';
-
-use Symfony\Component\ClassLoader\UniversalClassLoader;
-
-$loader = new UniversalClassLoader('apc.prefix.');*/
 $loader->registerNamespaces(array(
     'Symfony' => __DIR__,
     'MusicFestival' => __DIR__,
@@ -25,4 +20,3 @@ $loader->registerPrefixes(array(
 $loader->register();
 
 define('MUSICFESTIVAL_DIR', realpath(__DIR__.'/..'));
-

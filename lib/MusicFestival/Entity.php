@@ -51,10 +51,10 @@ abstract class Entity {
    * @param array $array
    * @return \MusicFestival\Entity
    */
-  function setAttributes(array $array) {
+  function setAttributes(array $array, $doNotOverride = false) {
     foreach ($array as $key => $value) {
       if ($this->hasAttribute($key)) {
-        $this->setAttribute($key, $value);
+        $this->setAttribute($key, $value, $doNotOverride);
       }
     }
   }
