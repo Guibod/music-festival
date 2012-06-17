@@ -6,17 +6,29 @@ body{
     font-family:"Myriad Pro","Trebuchet MS", Helvetica, sans-serif;
     font-size:16px;
     color:#fff;
-    background-color:#000;
+/*    background-color:#000;*/
     overflow-x:hidden;
 }
 h1{
     margin:20px;
     font-size:40px;
+    position: relative;
+    text-shadow: 2px 2px 5px black;
+    color: black;
 }
 .footer {
   position: fixed;
   bottom: 0;
   right: 0;
+  width: 100%;
+  text-align: right;
+  padding: 5px 10px;
+  background-color: black;
+  font-weight: bold;
+  font-size: 80%;
+  box-shadow: 2px 2px 5px black;
+  margin: 10px 0;
+  opacity: 0.8;
 }
 
 .st_main img.st_preview{
@@ -31,8 +43,15 @@ h1{
     position:fixed;
     top:0px;
     left:0px;
-    background:transparent url(../images/pattern.png) repeat-x bottom left;
+/*    background:transparent url(../images/pattern.png) repeat-x bottom left;*/
     opacity:0.3;
+background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+background: linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
 /*
 .st_loading{
@@ -50,9 +69,17 @@ h1{
 ul.st_navigation{
     position:absolute;
     width:100%;
-    top:140px;
+    /*top:140px;*/
     left:-300px;
     list-style:none;
+    padding-bottom: 40px;
+}
+ul.st_navigation:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 
 ul.st_navigation li {
@@ -76,13 +103,16 @@ ul.st_navigation li span.st_link{
 
 ul.st_navigation li span.st_arrow_down,
 ul.st_navigation li span.st_arrow_up{
-    position:absolute;
-    width:40px;
-    height:50px;
+    /*position:absolute;*/
+    display: inline-block;
+    margin-left:15px;
+    width:16px;
+    height:16px;
     cursor:pointer;
-    -moz-box-shadow:0px 0px 2px #000;
-    -webkit-box-shadow:0px 0px 2px #000;
-    box-shadow:0px 0px 2px #000;
+    -moz-box-shadow:0px 0px 6px #000;
+    -webkit-box-shadow:0px 0px 6px #000;
+    box-shadow:0px 0px 6px #000;
+    vertical-align: middle;
 }
 ul.st_navigation li span.st_arrow_down{
     background:#a0a0a0 url(../images/icons/Add.png) no-repeat center center;
@@ -95,14 +125,14 @@ ul.st_navigation li span.st_arrow_up{
     display:none;
     position: absolute;
     width:100%;
-    height:450px;
+    height:327px;
     overflow-y:hidden;
     top:50px;
     left:0px;
 }
 
 .st_thumbs{
-    height:300px;
+    height:322px;
     margin: 0;
 }
 
@@ -167,8 +197,12 @@ ul.st_navigation li span.st_arrow_up{
   float: left;
   width: 230px;
   height:300px;
-  border: 1px solid red;
+  border: 1px solid grey;
   padding: 10px;
+  margin-right: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 5px black;
+  color: black;
 }
 
 .track .main {
@@ -217,4 +251,45 @@ font-size: 210%;
 
 .tag9, .tag10 {
 font-size: 250%;
+}
+
+.tagcloud-link {
+  position: absolute;
+  top: 3em;
+  right: 10px;
+  margin-left: 10px;
+}
+
+.button-link {
+  color: white;
+  text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+/*	color: #123d54;*/
+	padding: 3px 10px;
+	background: -moz-linear-gradient(
+		top,
+		#afd9fa 0%,
+		#588fad);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#afd9fa),
+		to(#588fad));
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border: 1px solid #003366;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.7),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
+
+.st_link .button-link {
+  margin-left: 10px;
 }

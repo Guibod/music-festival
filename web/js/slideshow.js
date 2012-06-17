@@ -43,7 +43,7 @@ $(function() {
           hideThumbs();
           $this.addClass('st_arrow_up').removeClass('st_arrow_down');
           var $elem = $this.closest('li');
-          $elem.addClass('current').animate({'height':'350px'},500);
+          $elem.addClass('current').animate({'height':'377px'},500);
           var $thumbs_wrapper = $this.parent().next();
           $thumbs_wrapper.show(300);
   });
