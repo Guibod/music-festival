@@ -53,7 +53,7 @@ class Person extends Entity {
    */
   function getTrack($key) {
     if(!isset($this->tracks[$key])) {
-      throw new Exception("Track #$key not found for {$this->getName()}.");
+      throw new \Exception("Track #$key not found for {$this->getName()}.");
     }
 
     return $this->tracks[$key];
@@ -135,9 +135,12 @@ class Person extends Entity {
    * @return \MusicFestival\Person
    * @throws \Exception
    */
-  static function fromName($name) {
-    $settings = \MusicFestival\Config::getInstance()->getSettings();
-    $directory = $settings['playlist']['dir'];
+  static function fromName($name, $playlist = null) {
+    $config = \MusicFestival\Config::getInstance();
+    if(!$playlist) {
+      $playlist = $config->getSetting('playlist','dir');
+    }
+    $directory = MUSICFESTIVAL_DIR.'/config/'.$playlist;
 
     $file = $directory.DIRECTORY_SEPARATOR.$name.'.yml';
 
@@ -150,6 +153,6 @@ class Person extends Entity {
       return self::fromYaml($file);
     }
 
-    throw new \Exception("No file found for $name.");
+    throw new \Exception("No file found for $name in $playlist.");
   }
 }

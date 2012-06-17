@@ -1,11 +1,14 @@
 <?php
 
 require_once __DIR__.'/Symfony/Component/ClassLoader/UniversalClassLoader.php';
-require_once __DIR__.'/Symfony/Component/ClassLoader/ApcUniversalClassLoader.php';
+if(\function_exists('apc_clear_cache')) {
+  require_once __DIR__.'/Symfony/Component/ClassLoader/ApcUniversalClassLoader.php';
+  $loader = new Symfony\Component\ClassLoader\ApcUniversalClassLoader('apc.prefix.');
+} else {
+  $loader = new Symfony\Component\ClassLoader\UniversalClassLoader();
+}
 
-use Symfony\Component\ClassLoader\ApcUniversalClassLoader;
 
-$loader = new ApcUniversalClassLoader('apc.prefix.');
 
 $loader->registerNamespaces(array(
     'Symfony' => __DIR__,

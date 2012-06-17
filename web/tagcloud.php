@@ -5,9 +5,9 @@ require_once __DIR__.'/../lib/bootstrap.php';
 $config  = \MusicFestival\Config::getInstance();
 
 if(!isset($_GET['who'])) {
-  $persons = $config->getPersons();
+  $persons = $config->getPersons(@$_GET['playlist']);
 } else {
-  $persons = array( \MusicFestival\Person::fromName($_GET['who']));
+  $persons = array( \MusicFestival\Person::fromName($_GET['who'], @$_GET['playlist']));
 }
 
 

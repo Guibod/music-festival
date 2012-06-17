@@ -3,10 +3,14 @@
   <h3>{{ track.title }}</h3>
 
   <div class="main">
-
-    <a title="Memo" rel="memo.php?person={{person.id}}&track={{trackgId}}" href="memo.php?person={{personId}}&track={{trackId}}" class="laius">
+    {% if track.memo %}
+    <a title="Memo" rel="memo.php?playlist={{playlistId}}&person={{person.id}}&track={{trackId}}" href="memo.php?playlist={{playlistId}}&person={{personId}}&track={{trackId}}" class="laiusTooltip">
       <img class="cover" src="{{ track.cover | default("images/no_cover.jpg") }}" title="{{ track.title }}"/>
     </a>
+    {% else %}
+      <img class="cover" src="{{ track.cover | default("images/no_cover.jpg") }}" title="{{ track.title }}"/>
+    {% endif %}
+
 
     <div class="extra">{{ track.artist }} - {{ track.album }}</div>
 
@@ -20,7 +24,7 @@
   <div class="rcolumn">
   {% for linkId, link in track.links %}
     {% if link.hasPlayer %}
-      <a title="{{link.name}}" rel="link.php?person={{person.id}}&track={{trackId}}&link={{linkId}}" href="link.php?person={{personId}}&track={{trackId}}&link={{linkId}}" class="link hasPlayer">
+      <a title="{{link.name}}" rel="link.php?playlist={{playlistId}}&person={{person.id}}&track={{trackId}}&link={{linkId}}" href="link.php?playlist={{playlistId}}&person={{personId}}&track={{trackId}}&link={{linkId}}" class="link hasPlayer">
     {% else %}
       <a title="{{link.name}}" href="{{ link.url }}" target="_blank" class="link">
     {% endif %}

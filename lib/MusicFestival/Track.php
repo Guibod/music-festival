@@ -189,7 +189,7 @@ class Track extends \MusicFestival\Entity {
       $tags = $this->getAttribute(self::ATTR_TAGS);
       foreach($input['tag'] as $tag)
       {
-        if(!isset($tags[$tag['name']])) {
+        if(isset($tag['name']) && !isset($tags[$tag['name']])) {
           $tags[$tag['name']] = $tag['url'];
         }
       }

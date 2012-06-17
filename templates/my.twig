@@ -8,6 +8,11 @@
         <link rel="stylesheet" type="text/css" href="css/slideshow.css"></link>
         <link rel="stylesheet" type="text/css" href="http://cdn.dp.technion.ac.il/cluetip/jquery_cluetip.css" />
 
+
+        <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+        <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+        <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
+
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body>
@@ -17,11 +22,18 @@
       <form method="post" action="my.php" enctype="multipart/form-data">
           <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
           <input type="file" name="mySample">
-          <input type="submit" value="Envoyer">
+          <input type="submit" value="Submit">
       </form>
 
-      h<3>Sample</h3>
-      <pre>{{sample}}</pre>
+      <h3>Sample</h3>
+      <p>Below sample can be copied and edited in your text editor, upload the file through above form, and let the magic happen</p>
+      <pre class="brush: yaml">{{sample}}</pre>
 
+      <script type="text/javascript">
+        SyntaxHighlighter.autoloader(
+          'yaml            js/SyntaxHighlighter/shBrushYaml.js'
+        );
+        SyntaxHighlighter.all()
+      </script>
     </body>
 </html>

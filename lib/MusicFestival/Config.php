@@ -88,9 +88,12 @@ class Config {
     return self::$_instance;
   }
 
-  public function getPersons() {
+  public function getPersons($playlist = null) {
+    if(!$playlist) {
+      $playlist = $this->getSetting('playlist','dir');
+    }
     $settings = \MusicFestival\Config::getInstance()->getSettings();
-    $directory = $settings['playlist']['dir'];
+    $directory = MUSICFESTIVAL_DIR.'/config/'.$playlist;
     $persons = array();
 
     if ($handle = opendir($directory)) {

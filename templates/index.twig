@@ -17,7 +17,7 @@
 
         <ul>
           <li>
-            <a title="Tag Cloud" rel="tagcloud.php" href="tagcloud.php" class="tagCloudTooltip">Tag Cloud</a>
+            <a title="Tag Cloud" rel="tagcloud.php?playlist={{playlistId}}" href="tagcloud.php?playlist={{playlistId}}" class="tagCloudTooltip">Tag Cloud</a>
           </li>
           <li>
             <a title="Test my file" rel="my.php" href="my.php">Test my yaml file.</a>
@@ -29,7 +29,8 @@
             <li class="album">
                 <span class="st_link">
                     {{ person.name }}
-                    <a title="Memo" rel="tagcloud.php?who={{personId}}" href="tagcloud.php?who={{personId}}" class="tagCloudTooltip button-link">Tag Cloud</a>
+                    <a title="Memo" rel="tagcloud.php?playlist={{playlistId}}&who={{personId}}" href="tagcloud.php?playlist={{playlistId}}&who={{personId}}" class="tagCloudTooltip button-link">Tag Cloud</a>
+
                     <span class="st_arrow_down"></span>
                 </span>
                 <div class="st_wrapper st_thumbs_wrapper">
@@ -51,7 +52,7 @@
       <script type="text/javascript">
       $(document).ready(function() {
         $('.tagCloudTooltip').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: false });;
-        $('.laius').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: false });
+        $('.laiusTooltip').cluetip({multiple: true, activation: 'hover', width: 500, closePosition: 'title', sticky: false });
         $('.hasPlayer').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: true });
 
       });
