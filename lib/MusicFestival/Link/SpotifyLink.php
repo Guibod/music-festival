@@ -2,7 +2,7 @@
 
 namespace MusicFestival\Link;
 
-class SpotifyLink extends \MusicFestival\Link\DefaultLink {
+class SpotifyLink extends \MusicFestival\Link\PlayerLink {
   public function __construct($url) {
     $this->url = $url;
 
@@ -11,12 +11,6 @@ class SpotifyLink extends \MusicFestival\Link\DefaultLink {
       $this->id = $match['id'];
     }
   }
-
-  public function hasPlayer()
-  {
-    return true;
-  }
-
   public function getPlayer()
   {
     return new \MusicFestival\Player\SpotifyPlayer($this);
@@ -37,10 +31,6 @@ class SpotifyLink extends \MusicFestival\Link\DefaultLink {
 
   public function getName() {
     return "Spotify";
-  }
-
- public function getTemplate() {
-    return "link/spotify.twig";
   }
 
   public static function isMatchingUrl($url) {

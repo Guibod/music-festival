@@ -1,60 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Music Festival</title>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="http://cdn.dp.technion.ac.il/cluetip/jquery.cluetip.min.js"></script>
-
-        <link rel="stylesheet" type="text/css" href="css/slideshow.css"></link>
-        <link rel="stylesheet" type="text/css" href="http://cdn.dp.technion.ac.il/cluetip/jquery_cluetip.css" />
-
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <style>
-            #tags ul {
-margin: 1em 0;
-padding: .5em 10px;
-text-align: center;
-background: #71B5E9 url(bg_tags.gif) repeat-x;
-}
-
-#tagCloud {
-  width: 400px;
-}
-
-#tagCloud li {
-margin: 0;
-padding: 0;
-list-style: none;
-display: inline;
-}
-
-.tag1, .tag2 {
-font-size: 100%;
-}
-
-.tag3, .tag4 {
-font-size: 130%;
-}
-
-.tag5, .tag6 {
-font-size: 180%;
-}
-
-.tag7, .tag8 {
-font-size: 210%;
-}
-
-.tag9, .tag10 {
-font-size: 250%;
-}
-        </style>
-    </head>
-    <body>
-      <div id="st_main" class="st_main">
-        <div class="st_overlay"></div>
         <h1>Tag cloud for {{who  | default("everybody") }}</h1>
 
-        <div id="tagCloud">
+        <div class="tagCloud">
           <ul>
             {% for tag in tags %}
               <li class="tag{{tag.decile}}"> <a href="{{tag.url}}" rel="tag" target="_blank">{{tag.name}}</a></li>
@@ -62,7 +8,3 @@ font-size: 250%;
           </ul>
         </div>
       </div>
-      <div class="footer">Available on https://github.com/Guibod/music-festival under the <a href="http://sam.zoy.org/wtfpl/">WTFPL</a></div>
-
-    </body>
-</html>

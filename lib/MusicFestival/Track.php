@@ -134,42 +134,48 @@ class Track extends \MusicFestival\Entity {
   {
     if($this->getMbid())
     {
-      try {
-        $client = \MusicFestival\Config::getInstance()->getLastFmClient();
-        $track = $client->getTrackService()->getInfo(array('mbid' => $this->getMbid()));
-      } catch (\Exception $e) {
-        return;
-      }
-
-      $this->setAttribute(self::ATTR_TITLE, $track['name'], true);
-      $this->setAttribute(self::ATTR_ARTIST, $track['artist']['name'], true);
-
-      if(isset($track['album']))
-      {
-        $this->setAttribute(self::ATTR_ALBUM, $track['album']['title'], true);
-        $this->setAttribute(self::ATTR_COVER, $track['album']['image'][2]['#text'], true);
-      }
-
-      $this->addTags($track['toptags']);
-
-      // extend tags with artist
-      if(isset($track['artist']['mbid']) && $track['artist']['mbid']) {
-        try {
-          $topTags = $client->getArtistService()->getTopTags(array('mbid' => $track['artist']['mbid']));
-          $this->addTags($topTags);
-        } catch (Exception $e) {
-          // that's ok
-        }
-      }
-
-      $links = $this->getAttribute(self::ATTR_LINKS);
-      $links[] = $track['url'];
-      $links[]= "http://www.last.fm/affiliate/byid/9/{$track['id']}/6/trackpage/{$track['id']}";
-      $links[] = "http://www.last.fm/affiliate/byid/9/{$track['id']}/1000168/trackpage/{$track['id']}";
-      $links[] = "http://www.last.fm/affiliate/byid/9/{$track['id']}/4/trackpage/{$track['id']}";
-
-      $this->setAttribute(self::ATTR_LINKS, $links);
+      $param = array('mbid' => $this->getMbid());
+    } elseif($this->getTitle()) {
+      $param = array('artist' => $this->getArtist(), 'track' => $this->getTitle());
+    } else {
+      return;
     }
+
+    try {
+      $client = \MusicFestival\Config::getInstance()->getLastFmClient();
+      $track = $client->getTrackService()->getInfo($param);
+    } catch (\Exception $e) {
+      return;
+    }
+
+    $this->setAttribute(self::ATTR_TITLE, $track['name'], true);
+    $this->setAttribute(self::ATTR_ARTIST, $track['artist']['name'], true);
+
+    if(isset($track['album']))
+    {
+      $this->setAttribute(self::ATTR_ALBUM, $track['album']['title'], true);
+      $this->setAttribute(self::ATTR_COVER, $track['album']['image'][2]['#text'], true);
+    }
+
+    $this->addTags($track['toptags']);
+
+    // extend tags with artist
+    if(isset($track['artist']['mbid']) && $track['artist']['mbid']) {
+      try {
+        $topTags = $client->getArtistService()->getTopTags(array('mbid' => $track['artist']['mbid']));
+        $this->addTags($topTags);
+      } catch (Exception $e) {
+        // that's ok
+      }
+    }
+
+    $links = $this->getAttribute(self::ATTR_LINKS);
+    $links[] = $track['url'];
+    $links[]= "http://www.last.fm/affiliate/byid/9/{$track['id']}/6/trackpage/{$track['id']}";
+    $links[] = "http://www.last.fm/affiliate/byid/9/{$track['id']}/1000168/trackpage/{$track['id']}";
+    $links[] = "http://www.last.fm/affiliate/byid/9/{$track['id']}/4/trackpage/{$track['id']}";
+
+    $this->setAttribute(self::ATTR_LINKS, $links);
   }
 
   function addTags($input) {

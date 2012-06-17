@@ -7,22 +7,8 @@ class GrooveShark2Link extends \MusicFestival\Link\DefaultLink {
     return "images/link/grooveshark.png";
   }
 
-    public function hasPlayer()
-  {
-    return false; //broken atm
-  }
-
-  public function getPlayer()
-  {
-    //return new \MusicFestival\Player\GrooveSharkPlayer($this);
-  }
-
   public function getName() {
     return "Groove Shark";
-  }
-
-  public function getTemplate() {
-    return "link/grooveshark.twig";
   }
 
   public static function isMatchingUrl($url) {

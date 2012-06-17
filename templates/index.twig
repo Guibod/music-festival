@@ -15,13 +15,16 @@
         <div class="st_overlay"></div>
         <h1>Music Festival</h1>
 
-        <a href="tagcloud.php">Tag cloud for everyone</a>
+        <p>
+          <a title="Tag Cloud" rel="tagcloud.php" href="tagcloud.php" class="tagCloudTooltip">Tag Cloud</a>
+        </p>
 
         <ul id="st_nav" class="st_navigation">
           {% for personId,person in persons %}
             <li class="album">
                 <span class="st_link">
-                    {{ person.name }} (<a href="tagcloud.php?who={{personId}}">Tag cloud</a>)
+                    {{ person.name }}
+                    <a title="Memo" rel="tagcloud.php?who={{personId}}" href="tagcloud.php?who={{personId}}" class="tagCloudTooltip">Tag Cloud</a>
                     <span class="st_arrow_down"></span>
                 </span>
                 <div class="st_wrapper st_thumbs_wrapper">
@@ -31,7 +34,6 @@
                       {% endfor %}
                     </div>
                 </div>
-                <textarea>{{person.getYaml()}}</textarea>
             </li>
         {% endfor %}
         </ul>
@@ -42,7 +44,8 @@
       <script type="text/javascript" src="js/slideshow.js"></script>
       <script type="text/javascript">
       $(document).ready(function() {
-        $('.laius').cluetip();
+        $('.tagCloudTooltip').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: false });;
+        $('.laius').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: false });
         $('.hasPlayer').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: true });
 
       });

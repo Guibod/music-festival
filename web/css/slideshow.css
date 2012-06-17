@@ -77,7 +77,6 @@ ul.st_navigation li span.st_link{
 ul.st_navigation li span.st_arrow_down,
 ul.st_navigation li span.st_arrow_up{
     position:absolute;
-    margin-left:15px;
     width:40px;
     height:50px;
     cursor:pointer;
@@ -180,4 +179,42 @@ ul.st_navigation li span.st_arrow_up{
 .track .rcolumn {
   width: 40px;
   float: left;
+}
+
+.tagCloud ul {
+margin: 1em 0;
+padding: .5em 10px;
+text-align: center;
+background: #71B5E9 url(bg_tags.gif) repeat-x;
+}
+
+.tagCloud {
+  width: 400px;
+}
+
+.tagCloud li {
+margin: 0;
+padding: 0;
+list-style: none;
+display: inline;
+}
+
+.tag1, .tag2 {
+font-size: 100%;
+}
+
+.tag3, .tag4 {
+font-size: 130%;
+}
+
+.tag5, .tag6 {
+font-size: 180%;
+}
+
+.tag7, .tag8 {
+font-size: 210%;
+}
+
+.tag9, .tag10 {
+font-size: 250%;
 }
