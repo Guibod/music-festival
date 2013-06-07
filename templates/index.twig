@@ -3,10 +3,12 @@
     <head>
         <title>Music Festival</title>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="http://cdn.dp.technion.ac.il/cluetip/jquery.cluetip.min.js"></script>
+        <script type="text/javascript" src="js/cluetip/jquery.cluetip.min.js"></script>
 
+        <link rel="stylesheet" type="text/css" href="js/cluetip/jquery.cluetip.css" />
+        <link rel="stylesheet" type="text/css" href="css/cluetip.css"></link>
         <link rel="stylesheet" type="text/css" href="css/slideshow.css"></link>
-        <link rel="stylesheet" type="text/css" href="http://cdn.dp.technion.ac.il/cluetip/jquery_cluetip.css" />
+
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
@@ -28,7 +30,7 @@
           {% for personId,person in persons %}
             <li class="album">
                 <span class="st_link">
-                    {{ person.name }}
+                    <span class="person">{{ person.name }}</span>
                     <a title="Memo" rel="tagcloud.php?playlist={{playlistId}}&who={{personId}}" href="tagcloud.php?playlist={{playlistId}}&who={{personId}}" class="tagCloudTooltip button-link">Tag Cloud</a>
 
                     <span class="st_arrow_down"></span>
@@ -54,7 +56,6 @@
         $('.tagCloudTooltip').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: false });;
         $('.laiusTooltip').cluetip({multiple: true, activation: 'hover', width: 500, closePosition: 'title', sticky: false });
         $('.hasPlayer').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: true });
-
       });
       </script>
     </body>

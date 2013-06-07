@@ -15,12 +15,17 @@ if(isset($_FILES['mySample'])) {
   }
 
   try {
-    $persons = array($id => \MusicFestival\Person::fromYaml($_FILES['mySample']['tmp_name']));
-    echo $config->getTwig()->render('index.twig', array('persons' => $persons));
+    $yaml = new \Symfony\Component\Yaml\Yaml();
+    $yaml->parse($_FILES['mySample']['tmp_name']);
   } catch (Symfony\Component\Yaml\Exception\ParseException $e) {
     echo $e->getMessage();
+    exit;
+  }
+
+  if(\move_uploaded_file($_FILES['mySample']['tmp_name'], $target)) {
+    $persons = array($id => \MusicFestival\Person::fromYaml($target));
+    echo $config->getTwig()->render('index.twig', array('persons' => $persons));
   }
   exit;
-
 }
 echo $config->getTwig()->render('my.twig', array('sample' => $sample));

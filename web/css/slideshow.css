@@ -1,3 +1,8 @@
+@font-face { 	font-family: "Rainmaker"; 	src: url('../fonts/rainmaker/TheRainmaker.otf'); }
+@font-face { 	font-family: "Archisto"; 	src: url('../fonts/archisto/Archistico Simple.ttf'); }
+@font-face { 	font-family: "Coolvetica"; 	src: url('../fonts/coolvetica/coolvetica rg.otf'); }
+
+
 *{
     margin:0;
     padding:0;
@@ -8,13 +13,18 @@ body{
     color:#fff;
 /*    background-color:#000;*/
     overflow-x:hidden;
+
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-color: black;
 }
 h1{
     margin:20px;
-    font-size:40px;
+    font-size: 60px;
     position: relative;
-    text-shadow: 2px 2px 5px black;
-    color: black;
+    font-family: "Rainmaker";
+    text-shadow: 2px 2px 5px rgb(129, 14, 253);
+    color: white;
 }
 .footer {
   position: fixed;
@@ -206,6 +216,13 @@ ul.st_navigation li span.st_arrow_up{
   color: black;
 }
 
+.track h3 {
+  font-family: "Coolvetica";
+  font-size: 18px;
+  color: black;
+  text-shadow: 2px 2px 5px rgb(129, 14, 253);
+}
+
 .track .main {
   width: 180px;
   float: left;
@@ -293,4 +310,15 @@ font-size: 250%;
 
 .st_link .button-link {
   margin-left: 10px;
+}
+
+.person {
+  font-family: "Coolvetica";
+  font-size: 25px;
+  color: black;
+  text-shadow: 2px 2px 5px rgb(129, 14, 253);
+}
+
+.tagCloudContainer h1 {
+  font-size: 15px;
 }
