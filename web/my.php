@@ -14,10 +14,13 @@ if(isset($_FILES['mySample'])) {
     \mkdir(\pathinfo($target, \PATHINFO_DIRNAME), 0777, true);
   }
 
-  if(\move_uploaded_file($_FILES['mySample']['tmp_name'], $target)) {
-    $persons = array($id => \MusicFestival\Person::fromYaml($target));
+  try {
+    $persons = array($id => \MusicFestival\Person::fromYaml($_FILES['mySample']['tmp_name']));
     echo $config->getTwig()->render('index.twig', array('persons' => $persons));
-    exit;
+  } catch (Symfony\Component\Yaml\Exception\ParseException $e) {
+    echo $e->getMessage();
   }
+  exit;
+
 }
 echo $config->getTwig()->render('my.twig', array('sample' => $sample));
