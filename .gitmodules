@@ -13,3 +13,6 @@
 [submodule "lib/Cache"]
 	path = lib/Cache
 	url = https://github.com/pear/Cache_Lite
+[submodule "web/js/cluetip"]
+	path = web/js/cluetip
+	url = https://github.com/kswedberg/jquery-cluetip.git

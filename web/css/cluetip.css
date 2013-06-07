@@ -1,0 +1,11 @@
+.cluetip-default .ui-cluetip-header {
+background-color: rgb(3, 3, 3);
+}
+
+.cluetip-default .cluetip-outer {
+background-color: rgb(53, 53, 53);
+}
+
+.cluetip a {
+  color: pink;
+}
