@@ -9,6 +9,10 @@ if(!$config->getSetting('playlist','open')) {
   throw new Exception("Playlist is not yet opened to public.");
 }
 
-echo $config->getTwig()->render('playlist.twig', array('playlistId' => @$_GET['playlist'], 'persons' => $persons));
+echo $config->getTwig()->render('playlist.twig', array(
+  'title' =>  $config->getSetting('site','title'),
+  'playlistId' => @$_GET['playlist'],
+  'persons' => $persons)
+);
 
 

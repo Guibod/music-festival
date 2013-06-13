@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Music Festival</title>
+        <title>{{playlistId}}</title>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/cluetip/jquery.cluetip.min.js"></script>
 
@@ -13,11 +13,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body>
-      <div id="st_main" class="st_main">
+      <h1>{{playlistId}}</h1>
 
-        <h1>Music Festival</h1>
-
-        <ul>
+      <div class="navcontainer">
+        <ul class="navlist">
           <li>
             <a title="Homepage" rel="index.php" href="index.php">Homepage</a>
           </li>
@@ -25,18 +24,19 @@
             <a title="Tag Cloud" rel="tagcloud.php?playlist={{playlistId}}" href="tagcloud.php?playlist={{playlistId}}" class="tagCloudTooltip">Tag Cloud</a>
           </li>
           <li>
-            <a title="Test my file" rel="my.php" href="my.php">Test my yaml file.</a>
+            <a title="Test my file" rel="my.php" href="my.php">Test my yaml file</a>
           </li>
         </ul>
+      </div>
 
+      <div id="st_main" class="st_main">
         <ul id="st_nav" class="st_navigation">
           {% for personId,person in persons %}
             <li class="album">
-                <span class="st_link">
-                    <span class="person">{{ person.name }}</span>
-                    <a title="Memo" rel="tagcloud.php?playlist={{playlistId}}&who={{personId}}" href="tagcloud.php?playlist={{playlistId}}&who={{personId}}" class="tagCloudTooltip button-link">Tag Cloud</a>
-
+                <span class="st_link person">
                     <span class="st_arrow_down"></span>
+                    {{ person.name }}
+                    <a title="Tags for {{personId}}" rel="tagcloud.php?playlist={{playlistId}}&who={{personId}}" href="tagcloud.php?playlist={{playlistId}}&who={{personId}}" class="tagCloudTooltip button-link">Tag Cloud</a>
                 </span>
                 <div class="st_wrapper st_thumbs_wrapper">
                     <div class="st_thumbs">
@@ -56,7 +56,7 @@
       <script type="text/javascript" src="js/slideshow.js"></script>
       <script type="text/javascript">
       $(document).ready(function() {
-        $('.tagCloudTooltip').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: false });;
+        $('.tagCloudTooltip').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: true });;
         $('.laiusTooltip').cluetip({multiple: true, activation: 'hover', width: 500, closePosition: 'title', sticky: false });
         $('.hasPlayer').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: true });
       });

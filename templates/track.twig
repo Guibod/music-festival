@@ -4,7 +4,7 @@
 
   <div class="main">
     {% if track.memo %}
-    <a title="Memo" rel="memo.php?playlist={{playlistId}}&person={{person.id}}&track={{trackId}}" href="memo.php?playlist={{playlistId}}&person={{personId}}&track={{trackId}}" class="laiusTooltip">
+    <a title="{{ track.artist }} - {{ track.title }}" rel="memo.php?playlist={{playlistId}}&person={{person.id}}&track={{trackId}}" href="memo.php?playlist={{playlistId}}&person={{personId}}&track={{trackId}}" class="laiusTooltip">
       <img class="cover" src="{{ track.cover | default("images/no_cover.jpg") }}" title="{{ track.title }}"/>
     </a>
     {% else %}

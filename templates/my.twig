@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Music Festival</title>
+        <title>{{title}}</title>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script type="text/javascript" src="http://cdn.dp.technion.ac.il/cluetip/jquery.cluetip.min.js"></script>
 
@@ -16,18 +16,24 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
     <body>
-      <h1>Upload and test my own file</h1>
+      <h1>{{title}} - Upload and test my own file</h1>
 
       <h3>Form</h3>
-      <form method="post" action="my.php" enctype="multipart/form-data">
-          <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
-          <input type="file" name="mySample">
-          <input type="submit" value="Submit">
-      </form>
+      <div class="laius">
+        <form method="post" action="my.php" enctype="multipart/form-data">
+            <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+            <input type="file" name="mySample">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
 
       <h3>Sample</h3>
+
+      <div class="laius">
       <p>Below sample can be copied and edited in your text editor, upload the file through above form, and let the magic happen</p>
       <pre class="brush: yaml">{{sample}}</pre>
+</div>
 
       <script type="text/javascript">
         SyntaxHighlighter.autoloader(
@@ -35,5 +41,6 @@
         );
         SyntaxHighlighter.all()
       </script>
+
     </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Music Festival</title>
+        <title>{{title}}</title>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/cluetip/jquery.cluetip.min.js"></script>
 
@@ -15,14 +15,22 @@
     <body>
       <div id="st_main" class="st_main">
 
-        <h1>Music Festival</h1>
+        <h1>{{title}}</h1>
 
+        {{laius|raw }}
+
+
+        <h3>Test your own Yaml file</h3>
+        <div class="laius">
         <ul>
           <li>
             <a title="Test my file" rel="my.php" href="my.php">Test my yaml file.</a>
           </li>
         </ul>
+        </div>
 
+        <h3>Available playlists</h3>
+        <div class="laius">
         <ul>
         {% for playlist,directory in playlists %}
             <li class="playlist">
@@ -30,7 +38,8 @@
             </li>
         {% endfor %}
         </ul>
-        <div class="st_overlay"></div>
+        </div>
+
       </div>
       <div class="footer">Available on https://github.com/Guibod/music-festival under the <a href="http://sam.zoy.org/wtfpl/">WTFPL</a></div>
     </body>

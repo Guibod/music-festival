@@ -1,11 +1,9 @@
 <div class="tagCloudContainer">
-  <h1>Tag cloud for {{who  | default("everybody") }}</h1>
-
-        <div class="tagCloud">
-          <ul>
-            {% for tag in tags %}
-              <li class="tag{{tag.decile}}"> <a href="{{tag.url}}" rel="tag" target="_blank">{{tag.name}}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-  </div>        
+  <div class="tagCloud">
+    <ul>
+      {% for tag in tags %}
+        <li class="tag{{tag.decile}}"> <a href="{{tag.url}}" rel="tag" target="_blank">{{tag.name}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

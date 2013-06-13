@@ -24,8 +24,14 @@ if(isset($_FILES['mySample'])) {
 
   if(\move_uploaded_file($_FILES['mySample']['tmp_name'], $target)) {
     $persons = array($id => \MusicFestival\Person::fromYaml($target));
-    echo $config->getTwig()->render('index.twig', array('persons' => $persons));
+    echo $config->getTwig()->render('playlist.twig', array(
+      'title' =>  $config->getSetting('site','title'),
+      'persons' => $persons)
+    );
   }
   exit;
 }
-echo $config->getTwig()->render('my.twig', array('sample' => $sample));
+echo $config->getTwig()->render('my.twig', array(
+  'title' =>  $config->getSetting('site','title'),
+  'sample' => $sample)
+);

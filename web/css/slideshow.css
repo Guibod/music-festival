@@ -18,6 +18,11 @@ body{
     background-repeat: no-repeat;
     background-color: black;
 }
+
+a {
+  color: #C6E746;
+}
+
 h1{
     margin:20px;
     font-size: 60px;
@@ -26,6 +31,16 @@ h1{
     text-shadow: 2px 2px 5px rgb(129, 14, 253);
     color: white;
 }
+
+h3{
+    margin:5px;
+    font-size: 30px;
+    position: relative;
+    font-family: "Coolvetica";
+    text-shadow: 2px 2px 5px rgb(129, 14, 253);
+    color: white;
+}
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -110,6 +125,8 @@ ul.st_navigation li span.st_link{
     -moz-box-shadow:0px 0px 2px #000;
     -webkit-box-shadow:0px 0px 2px #000;
     box-shadow:0px 0px 2px #000;
+    min-width: 400px;
+
 }
 
 ul.st_navigation li span.st_arrow_down,
@@ -127,9 +144,15 @@ ul.st_navigation li span.st_arrow_up{
 }
 ul.st_navigation li span.st_arrow_down{
     background:#a0a0a0 url(../images/icons/Add.png) no-repeat center center;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 ul.st_navigation li span.st_arrow_up{
     background:#a0a0a0 url(../images/icons/Remove.png) no-repeat center center;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 .st_wrapper{
@@ -197,6 +220,9 @@ ul.st_navigation li span.st_arrow_up{
   line-height: 15px;
   white-space: nowrap;
   border: 1px solid #D8DFEA;
+
+  text-decoration: none;
+  font-family: sans-serif;
 }
 
 .cover {
@@ -237,11 +263,6 @@ ul.st_navigation li span.st_arrow_up{
 margin: 1em 0;
 padding: .5em 10px;
 text-align: center;
-background: #71B5E9 url(bg_tags.gif) repeat-x;
-}
-
-.tagCloud {
-  width: 400px;
 }
 
 .tagCloud li {
@@ -321,4 +342,26 @@ font-size: 250%;
 
 .tagCloudContainer h1 {
   font-size: 15px;
+}
+
+.laius{
+    position: relative;
+    z-index:1;
+    width:600px;
+    margin:30px;
+    padding:10px;
+    overflow:hidden;
+}
+.laius:before{
+    z-index:-1;
+    position:absolute;
+    width:600px;
+    left:0;
+    top:0;
+    content: url('../images/laius.jpg');
+    opacity:0.4;
+    -webkit-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -moz-transition: opacity 1s linear;
+    transition: opacity 1s linear;
 }
