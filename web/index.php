@@ -3,12 +3,6 @@
 require_once __DIR__.'/../lib/bootstrap.php';
 
 $config  = \MusicFestival\Config::getInstance();
-$persons = $config->getPersons(@$_GET['playlist']);
+$playlists = $config->getPlaylists();
 
-if(!$config->getSetting('playlist','open')) {
-  throw new Exception("Playlist is not yet opened to public.");
-}
-
-echo $config->getTwig()->render('index.twig', array('playlistId' => @$_GET['playlist'], 'persons' => $persons));
-
-
+echo $config->getTwig()->render('index.twig', array('playlists' => $playlists));

@@ -88,6 +88,15 @@ class Config {
     return self::$_instance;
   }
 
+  public function getPlaylists() {
+    $path = MUSICFESTIVAL_DIR.'/config/*';
+    $playlists = array();
+    foreach(glob($path, GLOB_ONLYDIR) as $dir) {
+      $playlists[basename($dir)] = $dir;
+    }
+    return $playlists;
+  }
+
   public function getPersons($playlist = null) {
     if(!$playlist) {
       $playlist = $this->getSetting('playlist','dir');

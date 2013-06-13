@@ -19,44 +19,19 @@
 
         <ul>
           <li>
-            <a title="Tag Cloud" rel="tagcloud.php?playlist={{playlistId}}" href="tagcloud.php?playlist={{playlistId}}" class="tagCloudTooltip">Tag Cloud</a>
-          </li>
-          <li>
             <a title="Test my file" rel="my.php" href="my.php">Test my yaml file.</a>
           </li>
         </ul>
 
-        <ul id="st_nav" class="st_navigation">
-          {% for personId,person in persons %}
-            <li class="album">
-                <span class="st_link">
-                    <span class="person">{{ person.name }}</span>
-                    <a title="Memo" rel="tagcloud.php?playlist={{playlistId}}&who={{personId}}" href="tagcloud.php?playlist={{playlistId}}&who={{personId}}" class="tagCloudTooltip button-link">Tag Cloud</a>
-
-                    <span class="st_arrow_down"></span>
-                </span>
-                <div class="st_wrapper st_thumbs_wrapper">
-                    <div class="st_thumbs">
-                      {% for trackId, track in person.tracks %}
-                        {% include 'track.twig' %}
-                      {% endfor %}
-                    </div>
-                </div>
+        <ul>
+        {% for playlist,directory in playlists %}
+            <li class="playlist">
+                <a href="playlist-{{playlist}}.html">{{playlist}}</a>
             </li>
         {% endfor %}
         </ul>
         <div class="st_overlay"></div>
       </div>
       <div class="footer">Available on https://github.com/Guibod/music-festival under the <a href="http://sam.zoy.org/wtfpl/">WTFPL</a></div>
-
-      <script type="text/javascript" src="js/tipsy.js"></script>
-      <script type="text/javascript" src="js/slideshow.js"></script>
-      <script type="text/javascript">
-      $(document).ready(function() {
-        $('.tagCloudTooltip').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: false });;
-        $('.laiusTooltip').cluetip({multiple: true, activation: 'hover', width: 500, closePosition: 'title', sticky: false });
-        $('.hasPlayer').cluetip({multiple: true, activation: 'click', width: 500, closePosition: 'title', sticky: true });
-      });
-      </script>
     </body>
 </html>

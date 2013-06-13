@@ -2,3 +2,9 @@ Options +FollowSymLinks +ExecCGI
 
 AddType x-mapp-php6 .php
 AddHandler x-mapp-php6 .php
+
+RewriteEngine on
+
+RewriteRule ^playlist-(.+).html$ /music/playlist.php?playlist=$1 [L]
+
+
